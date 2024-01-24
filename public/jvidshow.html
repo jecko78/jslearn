@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrontEnd web development </title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="js-nav"></div>
+  <div class="container-fluid">
+    <br><br>
+    <div class="text-center">
+      <iframe style="align-content: center;" class="vidshow" width="auto" height="auto" src="6.png" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <br><br>
+      <button style="background-color: orangered;border: none;padding: 9px;border-radius: 3cqmax;" onclick="
+        const vidfra = document.querySelector('.vidshow');
+        vidfra.src = `https://www.youtube.com/embed/0hfeNPM7piw?si=lAX-V5g1-H-LCbN1`;
+      ">HTML</button>
+      <button class="btn btn-primary" onclick="
+        const vidfra = document.querySelector('.vidshow');
+        vidfra.src = `https://www.youtube.com/embed/HcInSUzhaUc?si=nl9DdjxCc-rz-U8w`;
+      ">CSS</button>
+      <button class="btn btn-warning" onclick="
+        const vidfra = document.querySelector('.vidshow');
+        vidfra.src = `https://www.youtube.com/embed/AbjY-ajKgSI?si=QMOhbJTkuLvDIwp6`;
+      ">JAVASCRIPT</button>
+    </div>
+    <br><br><hr>
+    
+  <script src="jnav.js" type="module"></script>
+</br>
+</body>
+</html>

@@ -1,0 +1,59 @@
+
+const lesson = document.querySelector('.js-lesson');
+lesson.innerHTML=`
+<!DOCTYPE html>
+<html lang="lo-LA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 02</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .jimg{
+      width: 85%;
+      height: auto;
+      margin: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="js-nav"></div>
+  <a class="float-start" href="page01.html" target="_blank"><h1>Lesson One</h1></a><a class="float-end" href="page03.html" target="_blank"><h1>Lesson Three</h1></a><h1 align="center">Lesson two</h1>
+  <h5>Credits from <a href="https://www.pixabay.com">pixabay.com</a></h5>
+  <div class="container-fluid">
+  <div class="card" style="width: 55%;">
+    <div class="card-body">
+      <p class="card-text h3 text-center"> ຂ້ອຍໄປວັດ</p>
+    </div>
+    <img src="https://cdn.pixabay.com/photo/2016/11/14/03/43/buddhism-1822518_1280.jpg" class="card-img-top" alt="I go to temple">
+  </div>
+  
+  <div class="card float-end" style="width: 55%;">
+    <div class="card-body">
+      <p class="card-text h3 text-center"> ລາວ(ຜູ້ຊາຍ)ໄປຫໍສະໝຸດ</p>
+    </div>
+    <img src="https://cdn.pixabay.com/photo/2017/08/06/22/01/books-2596809_1280.jpg" class="card-img-top" alt="He goes to library">
+  </div>
+  
+  <div class="card" style="width: 55%;">
+    <div class="card-body">
+      <p class="card-text h3 text-center"> ລາວ(ຜູ້ຍິງ)ໄປໂຮງຮຽນ</p>
+    </div>
+    <img src="https://cdn.pixabay.com/photo/2017/02/24/02/37/classroom-2093744_1280.jpg" class="card-img-top" alt="She goes to school">
+  </div>
+  
+  <div class="card float-end" style="width: 55%;">
+    <div class="card-body">
+      <p class="card-text h3 text-center"> ພວກເຂົາໄປຕະຫຼາດໃຫຍ່</p>
+    </div>
+    <img src="https://cdn.pixabay.com/photo/2015/09/21/14/24/supermarket-949913_1280.jpg" class="card-img-top" alt="They go to supermarket">
+  </div>
+  </div>
+
+
+
+  
+</body>
+</html>
+`
