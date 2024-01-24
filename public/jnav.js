@@ -68,6 +68,7 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
           <li><a class="dropdown-item" href="L_canvas/learncanva3.html">ຮຽນ Particle3</a></li>
           <li><a class="dropdown-item" href="lessontest.html">ຮຽນ Loading</a></li>
           <li><a class="dropdown-item" href="fallingstar.html">ຮຽນ falling stars</a></li>
+          <li><a class="dropdown-item" href="rain/index.html">ຮຽນ cloud</a></li>
           <li><a class="dropdown-item" href="GGborder/index.html">ຮຽນ Glowing Gradient Box</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="learnsound.html">ຮຽນ Sound</a></li>
