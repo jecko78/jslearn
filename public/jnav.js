@@ -49,6 +49,7 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
           <li><a class="dropdown-item" href="learnjavascript.html">ຮຽນ javascript</a></li>
           <li><a class="dropdown-item" href="learngame.html">ຮຽນ Build Game</a></li>
           <li><a class="dropdown-item" href="learndatabase.html">ຮຽນ sqlite3</a></li>
+          <li><a class="dropdown-item" href="GiminiAi/index.html">Ask Gimini Pro AI</a></li>
           <li><a class="dropdown-item" href="L_canvas/learncanva1.html">ຮຽນ Particle</a></li>
           <li><a class="dropdown-item" href="L_canvas/learncanva2.html">ຮຽນ Particle2</a></li>
           <li><a class="dropdown-item" href="L_canvas/learncanva3.html">ຮຽນ Particle3</a></li>
