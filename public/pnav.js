@@ -1,24 +1,24 @@
-  const message = new SpeechSynthesisUtterance();
+  const pmessage = new SpeechSynthesisUtterance();
   function onVoicesChanged(){
     const voices = speechSynthesis.getVoices();
 //    console.log(voices);
     const vnVoice = voices.find(voice=>voice.lang==='en-GB');
-    message.voice = vnVoice;
+    pmessage.voice = vnVoice;
   };
   
   function onclick(event){
-    message.text = event.target.getAttribute('alt');
-    //console.log(message);
-    speechSynthesis.speak(message);
+    pmessage.text = event.target.innerText;
+//    console.log(pmessage.text);
+    speechSynthesis.speak(pmessage);
   };
 
-  function run(){
+  function prun(){
     speechSynthesis.addEventListener('voiceschanged',onVoicesChanged);
 
-    const imgElems = Array.from(document.querySelectorAll('img'));
+    const imgElems = Array.from(document.querySelectorAll('p'));
     //console.log(imgElems);
     imgElems.forEach(imgElem => imgElem.addEventListener('click',onclick))
   }
-  run();
+  prun();
 
-  export {message};
+  export {pmessage};
