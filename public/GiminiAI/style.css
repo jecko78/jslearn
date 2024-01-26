@@ -1,4 +1,21 @@
 p
 {
-  font-size: 15px;
+  font-size: 3em;
+  top: 30px;
+  left: 30px;
+}
+#btnrun
+{
+  border-radius: 10px;
+  color: white;
+  background-color: blue;
+  top: 10%;
+  left: 20%;
+}
+#giminiprompt
+{
+  width: 600px;
+  height: 25px;
+  margin: 10px;
+
 }

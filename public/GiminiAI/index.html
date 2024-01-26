@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Santisouk Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <input type="text" id="giminiprompt">
-  <button id="run">Click to prompt</button>
-<p id="jpromt">Santisouk</p>  
+  <button id="btnrun">Click to prompt</button>
+  <p id="jpromt">Santisouk</p>  
+    
     <script type="importmap">
       {
         "imports": {
@@ -18,35 +19,30 @@
       }
     </script>
     <script type="module">
-      const hpromt = document.getElementById('jpromt');
-      const inputG = document.getElementById('giminiprompt');
-      const btnrun = document.getElementById('run');
       import { GoogleGenerativeAI } from "@google/generative-ai";
-
-      // Fetch your API_KEY
-      const API_KEY = "AIzaSyBgTL7b7pqwm_e1ZhskR2_irx2_u8gj5yU";
-
+      import {sapi} from "./gimini.js"
       // Access your API key (see "Set up your API key" above)
-      const genAI = new GoogleGenerativeAI(API_KEY);
+const genAI = new GoogleGenerativeAI(sapi);
+
 async function run() {
+  const chatprompt = document.getElementById('jpromt');
+  const inputprompt = document.getElementById('giminiprompt');
   // For text-only input, use the gemini-pro model
   const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-
-  const prompt = inputG.innerText
-
+  //console.log(inputprompt.value);
+  const prompt = inputprompt.value;
+  
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
+  chatprompt.innerText = text;
   //console.log(text);
-  hpromt.innerHTML=text
 }
-btnrun.addEventListener('click',() => {
+const btn = document.getElementById('btnrun');
+btn.addEventListener('click',() => {
   run();
 });
-      // ...
 
-
-      // ...
     </script>
 </body>
 </html>
