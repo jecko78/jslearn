@@ -1,55 +1,44 @@
-*
+.board
 {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-size: 9em;
 }
-h2{
-  display: block;
-  padding: 20px;
-  margin: 50px;
-  font-size: 15em;
-  background-color: black;
-  color: white;
-  width: 290px;
-  height: 290px;
+#scoreboard 
+{
+  display: grid;
+  grid-template-columns: auto auto ;
+  gap: 100px;
+  width: 100%;
+  height: auto;
+}
+#scoreboard > div
+{
   text-align: center;
-  border-radius: 15px;
+  border: solid 25px rgba(222, 222, 222);
+
+
 }
+
 h1
 {
-  font-size: 5em;
+  margin: 5px;
   text-align: center;
-  display: block;
-  border-radius: 25px;
+  text-wrap: true;
+  font-size: 5em;
 
+}
+h2
+{
+  margin: 10px;
+  text-align: center;
+  font-size: 25em;
+  border: solid 10px;
+  border-radius: 25px;
+  background-color: black;
+  color: #ffd700;
 }
 .btnteam
 {
-  display: flexbox;
-  align-items: center;
-  padding: 10px;
-  margin: 5px;
-  background-color: blue;
-  width: auto;
-  height: 90px;
+  margin: 1px;
   font-size: 5em;
-  font-weight: bolder;
-  color: white;
-  border-radius: 10px;
-}
-.team
-{
-  width: 50%;
-  height: 50%;
-  display: flexbox;
-  align-content: center;
-  border: solid 3px;
-}
-.container
-{
-  display: flexbox;
-  align-content: end;
-  width: 100%;
-  height: 100%;
+  background-color: #ffd700;
 }

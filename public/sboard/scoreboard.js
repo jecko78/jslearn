@@ -40,6 +40,7 @@ class Team {
     scoreElement.textContent = this.score;
     const incrementScoreButton = document.createElement('button');
 
+
     incrementScoreButton.textContent = '+';
     incrementScoreButton.classList.add('btnteam');
 
