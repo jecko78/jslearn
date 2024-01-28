@@ -41,6 +41,9 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
       <li class="nav-item">
         <a class="nav-link" href="jvidshow.html">ວິດີໂອປະກອບການຮຽນ</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="qrtest/index.html">QR_Gen</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           ComputerLanguage
