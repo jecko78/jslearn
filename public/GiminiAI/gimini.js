@@ -1,3 +1,3 @@
-const sapi = "AIzaSyBgTL7b7pqwm_e1ZhskR2_irx2_u8gj5yU"
+const sapi = "AIzaSyBdWJC7xUKvX9a8M2ro8XqE5zfxQKVytng"
 
 export {sapi};
