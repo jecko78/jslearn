@@ -44,7 +44,15 @@ const btn = document.getElementById('btnrun');
 btn.addEventListener('click',() => {
   run();
 });
-
+$("#giminiprompt").
+	on("blur", function () {
+		run();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			run();
+		}
+	});
     </script>
 </body>
 </html>
