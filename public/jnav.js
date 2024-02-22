@@ -36,7 +36,7 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="alphab02.html">ພະຍັນຊະນະ</a>
+        <a class="nav-link" href="alphabet.html">ພະຍັນຊະນະ</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="jvidshow.html">ວິດີໂອປະກອບການຮຽນ</a>

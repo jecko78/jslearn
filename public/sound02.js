@@ -1,12 +1,13 @@
-const img01 = document.getElementById('img01');
-const img02 = document.getElementById('img02');
-const img03 = document.getElementById('img03');
+//const img01 = document.getElementById('img01');
+//const img02 = document.getElementById('img02');
+//const img03 = document.getElementById('img03');
 
 
 function playalphabetsound(filename){
   let audio2 = new Audio();
 	audio2.src = filename
 	audio2.play();
+  audio2.ended();
 };
 
 img01.addEventListener('click', function(){
@@ -45,30 +46,166 @@ img06.addEventListener('click', function(){
   playalphabetsound(fname);
 });
 
-
-;
-/*
-audio2.src='LaoAphabet/2.mp3';
-img02.addEventListener('click', function(){
-  audio2.play();
-  audio2.addEventListener('playing',function(){
-    console.log('Audio 1 started play!');
-  })  
-  audio2.addEventListener('ended',function(){
-    console.log('Audio 1 ended!');    
-  })
-  
+img07.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/7.mp3";
+  playalphabetsound(fname);
 });
 
-audio3.src='LaoAphabet/3.mp3';
-img03.addEventListener('click', function(){
-  audio3.play();
-  audio3.addEventListener('playing',function(){
-    console.log('Audio 1 started play!');
-  })  
-  audio3.addEventListener('ended',function(){
-    console.log('Audio 1 ended!');    
-  })
-  
+img08.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/8.mp3";
+  playalphabetsound(fname);
 });
-*/
+
+img09.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/9.mp3";
+  playalphabetsound(fname);
+});
+
+img10.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/10.mp3";
+  playalphabetsound(fname);
+});
+
+img11.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/11.mp3";
+  playalphabetsound(fname);
+});
+
+img12.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/12.mp3";
+  playalphabetsound(fname);
+});
+
+img13.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/13.mp3";
+  playalphabetsound(fname);
+});
+
+img14.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/14.mp3";
+  playalphabetsound(fname);
+});
+
+img15.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/15.mp3";
+  playalphabetsound(fname);
+});
+
+img16.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/16.mp3";
+  playalphabetsound(fname);
+});
+
+img17.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/17.mp3";
+  playalphabetsound(fname);
+});
+
+img18.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/18.mp3";
+  playalphabetsound(fname);
+});
+
+img19.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/19.mp3";
+  playalphabetsound(fname);
+});
+
+img20.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/20.mp3";
+  playalphabetsound(fname);
+});
+
+img21.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/21.mp3";
+  playalphabetsound(fname);
+});
+
+img22.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/22.mp3";
+  playalphabetsound(fname);
+});
+
+img23.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/23.mp3";
+  playalphabetsound(fname);
+});
+
+img24.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/24.mp3";
+  playalphabetsound(fname);
+});
+
+img25.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/25.mp3";
+  playalphabetsound(fname);
+});
+
+img26.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/26.mp3";
+  playalphabetsound(fname);
+});
+
+img27.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/27.mp3";
+  playalphabetsound(fname);
+});
+
+img28.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/28.mp3";
+  playalphabetsound(fname);
+});
+
+img29.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/29.mp3";
+  playalphabetsound(fname);
+});
+
+img30.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/30.mp3";
+  playalphabetsound(fname);
+});
+
+img31.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/31.mp3";
+  playalphabetsound(fname);
+});
+
+img32.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/32.mp3";
+  playalphabetsound(fname);
+});
+
+img33.addEventListener('click', function(){
+  let fname
+  fname="LaoAphabet/33.mp3";
+  playalphabetsound(fname);
+});
+
+
