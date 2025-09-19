@@ -39,7 +39,7 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="nav-link" href="alphabet.html">ພະຍັນຊະນະ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="jvidshow.html">ວິດີໂອປະກອບການຮຽນ</a>
+        <a class="nav-link" href="xaysavang/index.html">ສູນພາສາໄຊສະຫວ່າງ</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="qrtest/index.html">QR_Gen</a>
