@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .quiz-option {
+            transition: background-color 0.2s;
+        }
+        .quiz-option.selected {
+            background-color: #DBEAFE; /* blue-100 */
+            border-color: #3B82F6; /* blue-500 */
+        }
+        .quiz-option.correct {
+            background-color: #D1FAE5; /* green-100 */
+            border-color: #10B981; /* green-500 */
+        }
+        .quiz-option.incorrect {
+            background-color: #FEE2E2; /* red-100 */
+            border-color: #EF4444; /* red-500 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="max-w-xl w-full bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+        <div id="quiz-container">
+            <header class="text-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Lesson 1: Quiz</h1>
+                <p id="progress" class="text-gray-600 mt-2">Question 1 of 5</p>
+            </header>
+
+            <div class="mb-6">
+                <p id="question" class="text-xl font-semibold text-gray-800 text-center"></p>
+            </div>
+
+            <div id="options-container" class="space-y-4">
+                <!-- Options will be dynamically inserted here -->
+            </div>
+
+            <div class="mt-8 text-center">
+                <button id="submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Submit
+                </button>
+            </div>
+             <div id="feedback" class="mt-4 text-center font-semibold h-6"></div>
+        </div>
+        
+        <div id="results-container" class="text-center hidden">
+            <h2 class="text-3xl font-bold text-gray-800">Quiz Complete!</h2>
+            <p class="text-xl mt-4 text-gray-700">Your score:</p>
+            <p id="score" class="text-5xl font-bold text-blue-600 my-4"></p>
+            <button id="restart-btn" class="bg-white hover:bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                Try Again
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "How do you respond to 'How are you?'",
+                options: ["I'm fine.", "My name is...", "Goodbye.", "Hello."],
+                answer: "I'm fine."
+            },
+            {
+                question: "What is another way to say 'Hello'?",
+                options: ["Good night.", "See you tomorrow.", "Hi.", "I'm fine."],
+                answer: "Hi."
+            },
+            {
+                question: "How do you ask for someone's name?",
+                options: ["How old are you?", "What is your name?", "How are you?", "Where are you from?"],
+                answer: "What is your name?"
+            },
+            {
+                question: "What is a common response to 'It's nice to meet you'?",
+                options: ["I'm fine.", "My name is...", "It's nice to meet you too.", "Goodbye."],
+                answer: "It's nice to meet you too."
+            },
+            {
+                question: "Which phrase is used when you are leaving?",
+                options: ["Good morning.", "Hello.", "What's your name?", "See you later."],
+                answer: "See you later."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionEl = document.getElementById('question');
+        const optionsContainer = document.getElementById('options-container');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressEl = document.getElementById('progress');
+        const feedbackEl = document.getElementById('feedback');
+        const scoreEl = document.getElementById('score');
+        const restartBtn = document.getElementById('restart-btn');
+
+        function loadQuiz() {
+            feedbackEl.textContent = '';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submit';
+
+            const currentQuestion = quizData[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.question;
+            optionsContainer.innerHTML = '';
+            progressEl.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+
+            currentQuestion.options.forEach(optionText => {
+                const optionEl = document.createElement('div');
+                optionEl.textContent = optionText;
+                optionEl.classList.add('quiz-option', 'p-4', 'border-2', 'rounded-lg', 'cursor-pointer', 'font-medium');
+                optionEl.addEventListener('click', () => {
+                    // Remove selection from others
+                    document.querySelectorAll('.quiz-option').forEach(el => el.classList.remove('selected'));
+                    // Add selection to clicked
+                    optionEl.classList.add('selected');
+                    selectedOption = optionEl;
+                    submitBtn.disabled = false;
+                });
+                optionsContainer.appendChild(optionEl);
+            });
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            scoreEl.textContent = `${score} / ${quizData.length}`;
+        }
+        
+        submitBtn.addEventListener('click', () => {
+            if (submitBtn.textContent === 'Next Question') {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) {
+                    loadQuiz();
+                } else {
+                    showResults();
+                }
+                return;
+            }
+
+            const correctAnswer = quizData[currentQuestionIndex].answer;
+            const options = optionsContainer.children;
+            
+            Array.from(options).forEach(option => {
+                if (option.textContent === correctAnswer) {
+                    option.classList.add('correct');
+                } else {
+                     option.classList.remove('selected');
+                }
+            });
+
+            if (selectedOption.textContent === correctAnswer) {
+                score++;
+                selectedOption.classList.add('correct');
+                feedbackEl.textContent = "Correct!";
+                feedbackEl.classList.add('text-green-600');
+            } else {
+                selectedOption.classList.add('incorrect');
+                feedbackEl.textContent = "Incorrect!";
+                feedbackEl.classList.add('text-red-600');
+            }
+            
+            submitBtn.textContent = 'Next Question';
+            if (currentQuestionIndex === quizData.length - 1) {
+                submitBtn.textContent = 'Show Results';
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+             currentQuestionIndex = 0;
+             score = 0;
+             selectedOption = null;
+             resultsContainer.classList.add('hidden');
+             quizContainer.classList.remove('hidden');
+             loadQuiz();
+        });
+
+        loadQuiz();
+    </script>
+
+</body>
+</html>
