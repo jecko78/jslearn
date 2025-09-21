@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 บทเรียนล้ำค่าจากสามก๊ก</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .icon-bg {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .leader-card {
+            border-left-width: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">7 บทเรียนล้ำค่าจากสามก๊ก</h1>
+            <p class="text-lg text-gray-600 mt-2">กลยุทธ์และปรัชญาเพื่อการใช้ชีวิตและการทำงาน</p>
+        </header>
+
+        <!-- Infographic Grid -->
+        <div class="space-y-8">
+
+            <!-- Lesson 1: Know Yourself, Know Your Enemy -->
+            <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="icon-bg bg-red-100 text-red-600 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-5.25-6.494h10.5M12 21a9 9 0 110-18 9 9 0 010 18z" /></svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">1. รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง</h2>
+                    <ul class="list-inside list-disc text-gray-700 space-y-1">
+                        <li><strong>การประเมินตนเอง:</strong> รู้จุดแข็ง จุดอ่อนของฝั่งตน</li>
+                        <li><strong>การประเมินคู่แข่ง:</strong> วิเคราะห์คู่ต่อสู้ให้รอบด้าน</li>
+                        <li><strong>รู้จักใช้คน:</strong> วางคนให้เหมาะกับงาน</li>
+                        <li><strong>การเลือกใช้กลยุทธ์:</strong> วางแผนให้สอดคล้องกับสถานการณ์</li>
+                        <li><strong>การปรับตัว:</strong> ยืดหยุ่นและพร้อมเปลี่ยนแปลงเสมอ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lesson 2: Winning Hearts -->
+            <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="icon-bg bg-blue-100 text-blue-600 flex-shrink-0">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">2. การครองใจคนสำคัญที่สุด</h2>
+                    <ul class="list-inside list-disc text-gray-700 space-y-1">
+                        <li><strong>คุณธรรมและความเมตตา:</strong> เป็นผู้นำที่น่าเคารพรัก</li>
+                        <li><strong>การให้ความสำคัญกับทีม:</strong> ดูแลเอาใจใส่ผู้ใต้บังคับบัญชา</li>
+                        <li><strong>การรับฟังความคิดเห็น:</strong> เปิดใจกว้างต่อข้อเสนอแนะ</li>
+                        <li><strong>ความยุติธรรมและการให้รางวัล:</strong> ให้คุณให้โทษอย่างเป็นธรรม</li>
+                        <li><strong>การสร้างความไว้วางใจ:</strong> ทำให้ทีมเชื่อมั่นและศรัทธา</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lesson 3: A Single Mistake -->
+            <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="icon-bg bg-yellow-100 text-yellow-600 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">3. ความผิดพลาดเพียงครั้งเดียว อาจนำไปสู่ความพ่ายแพ้</h2>
+                     <ul class="list-inside list-disc text-gray-700 space-y-1">
+                        <li><strong>ความประมาท:</strong> คือหนทางสู่ความหายนะ</li>
+                        <li><strong>การตัดสินใจที่ผิดพลาด:</strong> คิดให้รอบคอบก่อนลงมือ</li>
+                        <li><strong>การไม่เรียนรู้จากอดีต:</strong> บทเรียนมีไว้ให้จำ ไม่ใช่ให้ซ้ำ</li>
+                        <li><strong>อารมณ์ชั่ววูบ:</strong> ควบคุมสติและอารมณ์ให้มั่นคง</li>
+                        <li><strong>การขาดข้อมูลที่ถูกต้อง:</strong> ตัดสินใจบนพื้นฐานของความจริง</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Lesson 4: Alliances -->
+            <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="icon-bg bg-green-100 text-green-600 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">4. พันธมิตรที่ดี นำมาซึ่งชัยชนะ</h2>
+                     <ul class="list-inside list-disc text-gray-700 space-y-1">
+                        <li><strong>การเลือกพันธมิตร:</strong> เลือกคนที่ส่งเสริมซึ่งกันและกัน</li>
+                        <li><strong>ผลประโยชน์ร่วมกัน:</strong> สร้างสถานการณ์ที่ชนะ-ชนะทั้งสองฝ่าย</li>
+                        <li><strong>ความซื่อสัตย์และจริงใจ:</strong> คือพื้นฐานของความสัมพันธ์ที่ยั่งยืน</li>
+                        <li><strong>การสื่อสารที่ดี:</strong> พูดคุยให้เข้าใจตรงกันเสมอ</li>
+                        <li><strong>การรักษาสัมพันธ์:</strong> ดูแลมิตรภาพให้คงอยู่ยาวนาน</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lesson 5: Wisdom over Strength -->
+            <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="icon-bg bg-purple-100 text-purple-600 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">5. สติปัญญาเหนือกว่ากำลัง</h2>
+                     <ul class="list-inside list-disc text-gray-700 space-y-1">
+                        <li><strong>การวางแผนและกลยุทธ์:</strong> คืออาวุธที่ทรงพลังที่สุด</li>
+                        <li><strong>การใช้เล่ห์เหลี่ยมและอุบาย:</strong> พลิกแพลงเพื่อชิงความได้เปรียบ</li>
+                        <li><strong>การเจรจาต่อรอง:</strong> ใช้คำพูดแทนการใช้กำลัง</li>
+                        <li><strong>การแก้ปัญหาเฉพาะหน้า:</strong> มีไหวพริบและปฏิภาณ</li>
+                        <li><strong>การเรียนรู้และพัฒนาตนเอง:</strong> หมั่นลับสติปัญญาเสมอ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lesson 6: Opportunity and Readiness -->
+            <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="icon-bg bg-indigo-100 text-indigo-600 flex-shrink-0">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z" /></svg>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">6. โอกาสและความพร้อม</h2>
+                     <ul class="list-inside list-disc text-gray-700 space-y-1">
+                        <li><strong>การมองเห็นโอกาส:</strong> ในทุกวิกฤตมีโอกาสซ่อนอยู่</li>
+                        <li><strong>การเตรียมความพร้อม:</strong> คนที่พร้อมเท่านั้นที่จะคว้าโอกาสได้</li>
+                        <li><strong>ความกล้าตัดสินใจ:</strong> เมื่อโอกาสมาถึง ต้องกล้าที่จะคว้าไว้</li>
+                        <li><strong>การลงมือทำอย่างรวดเร็ว:</strong> โอกาสไม่เคยรอใคร</li>
+                        <li><strong>การประเมินความเสี่ยง:</strong> กล้าแต่ไม่บ้าบิ่น</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lesson 7: Virtue and Righteousness -->
+             <div class="card p-6">
+                <div class="flex flex-col md:flex-row items-center gap-6 mb-4">
+                    <div class="icon-bg bg-pink-100 text-pink-600 flex-shrink-0">
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>
+                    </div>
+                    <div>
+                         <h2 class="text-2xl font-bold text-gray-900">7. คุณธรรมและความถูกต้อง</h2>
+                         <p class="text-gray-600">อำนาจที่ปราศจากคุณธรรมย่อมไม่ยั่งยืน</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="leader-card border-green-500 p-4 rounded-lg bg-gray-50">
+                        <h3 class="font-bold text-lg text-green-700">เล่าปี่: ปกครองด้วยความเมตตา</h3>
+                        <p class="text-gray-700">เน้นคุณธรรมเป็นที่ตั้ง ผลลัพธ์คือได้ใจคนและผู้มีความสามารถเข้าร่วมมากมาย สร้างความยั่งยืนในระยะยาว</p>
+                    </div>
+                     <div class="leader-card border-red-500 p-4 rounded-lg bg-gray-50">
+                        <h3 class="font-bold text-lg text-red-700">โจโฉ: เก่งแต่ขาดคุณธรรม</h3>
+                        <p class="text-gray-700">"ยอมทรยศคนทั้งโลก แต่ไม่ยอมให้โลกทรยศเรา" ผลลัพธ์คือคนเกรงกลัวแต่ไม่รัก ขาดความไว้วางใจที่แท้จริง</p>
+                    </div>
+                     <div class="leader-card border-blue-500 p-4 rounded-lg bg-gray-50">
+                        <h3 class="font-bold text-lg text-blue-700">ซุนกวน: รักษาสมดุล</h3>
+                        <p class="text-gray-700">เน้นการปกป้องบ้านเมืองและรักษาสมดุลอำนาจ ผลลัพธ์คือความมั่นคงและสามารถยืนหยัดได้ยาวนานที่สุด</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-500">
+            <p>Infographic created based on "สรุป 7 บทเรียนสามก๊ก Mind Map"</p>
+            <a href="flashcards.html">
+                <h1>
+                    Go to Flashcards &rarr;
+                </h1>
+            </a>
+        </footer>
+
+    </div>
+
+</body>
+</html>

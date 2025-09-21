@@ -83,6 +83,7 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="selfworth/index.html">Self worth</a></li>
+          <li><a class="dropdown-item" href="7LessonThreeKingdom/index.html">7 Precious Lesson Threekingdom</a></li>
         </ul>
       </li>      
     </ul>

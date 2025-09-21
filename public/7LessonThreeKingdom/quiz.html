@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: 7 บทเรียนล้ำค่าจากสามก๊ก</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.3s ease;
+        }
+        .icon-bg {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quiz-option {
+            display: block;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .quiz-option:hover {
+            background-color: #f9fafb;
+        }
+        input[type="radio"]:checked + label {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .correct {
+            background-color: #dcfce7 !important;
+            border-color: #22c55e !important;
+        }
+        .incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Quiz: 7 บทเรียนล้ำค่าจากสามก๊ก</h1>
+            <p class="text-lg text-gray-600 mt-2">ทดสอบความเข้าใจในกลยุทธ์สามก๊ก</p>
+        </header>
+
+        <div class="space-y-8" id="quiz-container">
+
+            <!-- Question 1 -->
+            <div class="card p-6">
+                <div class="flex items-center gap-6 mb-4">
+                    <div class="icon-bg bg-red-100 text-red-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-5.25-6.494h10.5M12 21a9 9 0 110-18 9 9 0 010 18z" /></svg></div>
+                    <h2 class="text-2xl font-bold text-gray-900">1. รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง</h2>
+                </div>
+                <p class="mb-4 font-semibold">คำถาม: ตามหลัก 'รู้เขารู้เรา' ข้อใดไม่ใช่ปัจจัยสำคัญในการนำไปสู่ชัยชนะ?</p>
+                <div class="space-y-2 quiz-question" data-correct="q1-b">
+                    <div><input type="radio" id="q1-a" name="q1" value="q1-a" class="hidden"><label for="q1-a" class="quiz-option">A) การประเมินจุดแข็งและจุดอ่อนของตนเอง</label></div>
+                    <div><input type="radio" id="q1-b" name="q1" value="q1-b" class="hidden"><label for="q1-b" class="quiz-option">B) การมีกำลังทหารที่เหนือกว่าคู่ต่อสู้เสมอ</label></div>
+                    <div><input type="radio" id="q1-c" name="q1" value="q1-c" class="hidden"><label for="q1-c" class="quiz-option">C) การวางคนให้เหมาะสมกับงาน</label></div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="card p-6">
+                 <div class="flex items-center gap-6 mb-4">
+                    <div class="icon-bg bg-blue-100 text-blue-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></div>
+                    <h2 class="text-2xl font-bold text-gray-900">2. การครองใจคนสำคัญที่สุด</h2>
+                </div>
+                <p class="mb-4 font-semibold">คำถาม: อะไรคือหัวใจสำคัญที่สุดในการเป็นผู้นำที่ยิ่งใหญ่?</p>
+                <div class="space-y-2 quiz-question" data-correct="q2-c">
+                    <div><input type="radio" id="q2-a" name="q2" value="q2-a" class="hidden"><label for="q2-a" class="quiz-option">A) การมีอำนาจเบ็ดเสร็จเด็ดขาด</label></div>
+                    <div><input type="radio" id="q2-b" name="q2" value="q2-b" class="hidden"><label for="q2-b" class="quiz-option">B) การสั่งสมทรัพย์สมบัติและอาวุธ</label></div>
+                    <div><input type="radio" id="q2-c" name="q2" value="q2-c" class="hidden"><label for="q2-c" class="quiz-option">C) การได้รับความไว้วางใจและศรัทธา</label></div>
+                </div>
+            </div>
+
+            <!-- ... (Repeat for all 7 questions) ... -->
+             <!-- Question 3 -->
+            <div class="card p-6">
+                <div class="flex items-center gap-6 mb-4">
+                    <div class="icon-bg bg-yellow-100 text-yellow-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg></div>
+                    <h2 class="text-2xl font-bold text-gray-900">3. ความผิดพลาดเพียงครั้งเดียว</h2>
+                </div>
+                <p class="mb-4 font-semibold">คำถาม: ข้อใดคือสาเหตุหลักที่อาจนำไปสู่ความพ่ายแพ้ได้ง่ายที่สุด?</p>
+                <div class="space-y-2 quiz-question" data-correct="q3-a">
+                    <div><input type="radio" id="q3-a" name="q3" value="q3-a" class="hidden"><label for="q3-a" class="quiz-option">A) ความประมาทและอารมณ์ชั่ววูบ</label></div>
+                    <div><input type="radio" id="q3-b" name="q3" value="q3-b" class="hidden"><label for="q3-b" class="quiz-option">B) การมีพันธมิตรที่แข็งแกร่งเกินไป</label></div>
+                    <div><input type="radio" id="q3-c" name="q3" value="q3-c" class="hidden"><label for="q3-c" class="quiz-option">C) การศึกษาคู่ต่อสู้มากเกินไป</label></div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="card p-6">
+                <div class="flex items-center gap-6 mb-4">
+                     <div class="icon-bg bg-green-100 text-green-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                    <h2 class="text-2xl font-bold text-gray-900">4. พันธมิตรที่ดี</h2>
+                </div>
+                <p class="mb-4 font-semibold">คำถาม: ในการสร้างพันธมิตร สิ่งใดคือพื้นฐานที่ยั่งยืนที่สุด?</p>
+                <div class="space-y-2 quiz-question" data-correct="q4-c">
+                    <div><input type="radio" id="q4-a" name="q4" value="q4-a" class="hidden"><label for="q4-a" class="quiz-option">A) ผลประโยชน์ร่วมกันในระยะสั้น</label></div>
+                    <div><input type="radio" id="q4-b" name="q4" value="q4-b" class="hidden"><label for="q4-b" class="quiz-option">B) ความกลัวที่มีต่อศัตรูคนเดียวกัน</label></div>
+                    <div><input type="radio" id="q4-c" name="q4" value="q4-c" class="hidden"><label for="q4-c" class="quiz-option">C) ความซื่อสัตย์และความจริงใจต่อกัน</label></div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="card p-6">
+                <div class="flex items-center gap-6 mb-4">
+                    <div class="icon-bg bg-purple-100 text-purple-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></div>
+                    <h2 class="text-2xl font-bold text-gray-900">5. สติปัญญาเหนือกว่ากำลัง</h2>
+                </div>
+                <p class="mb-4 font-semibold">คำถาม: ข้อใดสะท้อนหลัก 'สติปัญญาเหนือกว่ากำลัง' ได้ดีที่สุด?</p>
+                <div class="space-y-2 quiz-question" data-correct="q5-b">
+                    <div><input type="radio" id="q5-a" name="q5" value="q5-a" class="hidden"><label for="q5-a" class="quiz-option">A) การนำทัพบุกโจมตีซึ่งหน้า</label></div>
+                    <div><input type="radio" id="q5-b" name="q5" value="q5-b" class="hidden"><label for="q5-b" class="quiz-option">B) การใช้กลอุบายลวงให้ศัตรูติดกับ</label></div>
+                    <div><input type="radio" id="q5-c" name="q5" value="q5-c" class="hidden"><label for="q5-c" class="quiz-option">C) การท้าประลองตัวต่อตัวกับแม่ทัพ</label></div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="card p-6">
+                <div class="flex items-center gap-6 mb-4">
+                     <div class="icon-bg bg-indigo-100 text-indigo-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z" /></svg></div>
+                    <h2 class="text-2xl font-bold text-gray-900">6. โอกาสและความพร้อม</h2>
+                </div>
+                <p class="mb-4 font-semibold">คำถาม: อะไรคือสิ่งที่จำเป็นต้องมีควบคู่ไปกับ 'โอกาส'?</p>
+                <div class="space-y-2 quiz-question" data-correct="q6-a">
+                    <div><input type="radio" id="q6-a" name="q6" value="q6-a" class="hidden"><label for="q6-a" class="quiz-option">A) ความพร้อม</label></div>
+                    <div><input type="radio" id="q6-b" name="q6" value="q6-b" class="hidden"><label for="q6-b" class="quiz-option">B) โชคชะตา</label></div>
+                    <div><input type="radio" id="q6-c" name="q6" value="q6-c" class="hidden"><label for="q6-c" class="quiz-option">C) เงินทุนจำนวนมาก</label></div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="card p-6">
+                <div class="flex items-center gap-6 mb-4">
+                    <div class="icon-bg bg-pink-100 text-pink-600 flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg></div>
+                    <h2 class="text-2xl font-bold text-gray-900">7. คุณธรรมและความถูกต้อง</h2>
+                </div>
+                <p class="mb-4 font-semibold">คำถาม: ผู้นำคนใดที่ถูกยกเป็นตัวอย่างของการปกครองด้วย 'คุณธรรม'?</p>
+                <div class="space-y-2 quiz-question" data-correct="q7-c">
+                    <div><input type="radio" id="q7-a" name="q7" value="q7-a" class="hidden"><label for="q7-a" class="quiz-option">A) โจโฉ</label></div>
+                    <div><input type="radio" id="q7-b" name="q7" value="q7-b" class="hidden"><label for="q7-b" class="quiz-option">B) ซุนกวน</label></div>
+                    <div><input type="radio" id="q7-c" name="q7" value="q7-c" class="hidden"><label for="q7-c" class="quiz-option">C) เล่าปี่</label></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button and Results -->
+        <div class="text-center mt-10">
+            <button id="submit-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors">ตรวจคำตอบ</button>
+            <div id="results" class="mt-6 text-2xl font-bold"></div>
+        </div>
+
+    </div>
+
+    <script>
+        const submitButton = document.getElementById('submit-btn');
+        const resultsContainer = document.getElementById('results');
+        const quizContainer = document.getElementById('quiz-container');
+
+        submitButton.addEventListener('click', () => {
+            let score = 0;
+            const questions = quizContainer.querySelectorAll('.quiz-question');
+            
+            questions.forEach(question => {
+                const correctAnswer = question.dataset.correct;
+                const selectedAnswerInput = question.querySelector(`input[name="${correctAnswer.substring(0, 2)}"]:checked`);
+
+                // Reset styles
+                question.querySelectorAll('label').forEach(label => {
+                    label.classList.remove('correct', 'incorrect');
+                });
+                
+                if (selectedAnswerInput) {
+                    const selectedAnswer = selectedAnswerInput.value;
+                    const selectedLabel = question.querySelector(`label[for="${selectedAnswer}"]`);
+                    
+                    if (selectedAnswer === correctAnswer) {
+                        score++;
+                        selectedLabel.classList.add('correct');
+                    } else {
+                        selectedLabel.classList.add('incorrect');
+                        // Also highlight the correct answer
+                        const correctLabel = question.querySelector(`label[for="${correctAnswer}"]`);
+                        correctLabel.classList.add('correct');
+                    }
+                } else {
+                    // If no answer is selected, just highlight the correct one
+                     const correctLabel = question.querySelector(`label[for="${correctAnswer}"]`);
+                     correctLabel.classList.add('correct');
+                }
+            });
+
+            resultsContainer.textContent = `คุณได้ ${score} จาก ${questions.length} คะแนน!`;
+            submitButton.textContent = "ลองอีกครั้ง";
+            submitButton.onclick = () => location.reload();
+        });
+    </script>
+
+</body>
+</html>

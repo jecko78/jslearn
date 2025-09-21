@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards: 7 บทเรียนล้ำค่าจากสามก๊ก</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        .flashcard-container {
+            perspective: 1000px;
+        }
+        .flashcard {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+        }
+        .flashcard-front {
+            background-color: white;
+        }
+        .flashcard-back {
+            background-color: #f9fafb; /* Slightly different bg for the back */
+            transform: rotateY(180deg);
+            align-items: flex-start; /* Align text to the left */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Flashcards สามก๊ก</h1>
+            <p class="text-lg text-gray-600 mt-2">คลิกที่การ์ดเพื่อดูรายละเอียดบทเรียน</p>
+            <a href="quiz.html">
+                <h3>After Flashcards You then go to quiz. Click me &rarr;</h3>
+            </a>
+        </header>
+
+        <!-- Flashcards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Card 1 -->
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <h2 class="text-2xl font-bold text-center text-gray-900">1. รู้เขารู้เรา รบร้อยครั้ง ชนะร้อยครั้ง</h2>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <ul class="list-inside list-disc text-gray-700 space-y-1 text-left w-full">
+                            <li><strong>การประเมินตนเอง:</strong> รู้จุดแข็ง จุดอ่อนของฝั่งตน</li>
+                            <li><strong>การประเมินคู่แข่ง:</strong> วิเคราะห์คู่ต่อสู้ให้รอบด้าน</li>
+                            <li><strong>รู้จักใช้คน:</strong> วางคนให้เหมาะกับงาน</li>
+                            <li><strong>การเลือกใช้กลยุทธ์:</strong> วางแผนให้สอดคล้องกับสถานการณ์</li>
+                            <li><strong>การปรับตัว:</strong> ยืดหยุ่นและพร้อมเปลี่ยนแปลงเสมอ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <h2 class="text-2xl font-bold text-center text-gray-900">2. การครองใจคนสำคัญที่สุด</h2>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <ul class="list-inside list-disc text-gray-700 space-y-1 text-left w-full">
+                            <li><strong>คุณธรรมและความเมตตา:</strong> เป็นผู้นำที่น่าเคารพรัก</li>
+                            <li><strong>การให้ความสำคัญกับทีม:</strong> ดูแลเอาใจใส่ผู้ใต้บังคับบัญชา</li>
+                            <li><strong>การรับฟังความคิดเห็น:</strong> เปิดใจกว้างต่อข้อเสนอแนะ</li>
+                            <li><strong>ความยุติธรรมและการให้รางวัล:</strong> ให้คุณให้โทษอย่างเป็นธรรม</li>
+                            <li><strong>การสร้างความไว้วางใจ:</strong> ทำให้ทีมเชื่อมั่นและศรัทธา</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <h2 class="text-2xl font-bold text-center text-gray-900">3. ความผิดพลาดเพียงครั้งเดียว อาจนำไปสู่ความพ่ายแพ้</h2>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <ul class="list-inside list-disc text-gray-700 space-y-1 text-left w-full">
+                            <li><strong>ความประมาท:</strong> คือหนทางสู่ความหายนะ</li>
+                            <li><strong>การตัดสินใจที่ผิดพลาด:</strong> คิดให้รอบคอบก่อนลงมือ</li>
+                            <li><strong>การไม่เรียนรู้จากอดีต:</strong> บทเรียนมีไว้ให้จำ ไม่ใช่ให้ซ้ำ</li>
+                            <li><strong>อารมณ์ชั่ววูบ:</strong> ควบคุมสติและอารมณ์ให้มั่นคง</li>
+                            <li><strong>การขาดข้อมูลที่ถูกต้อง:</strong> ตัดสินใจบนพื้นฐานของความจริง</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <h2 class="text-2xl font-bold text-center text-gray-900">4. พันธมิตรที่ดี นำมาซึ่งชัยชนะ</h2>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <ul class="list-inside list-disc text-gray-700 space-y-1 text-left w-full">
+                            <li><strong>การเลือกพันธมิตร:</strong> เลือกคนที่ส่งเสริมซึ่งกันและกัน</li>
+                            <li><strong>ผลประโยชน์ร่วมกัน:</strong> สร้างสถานการณ์ที่ชนะ-ชนะทั้งสองฝ่าย</li>
+                            <li><strong>ความซื่อสัตย์และจริงใจ:</strong> คือพื้นฐานของความสัมพันธ์ที่ยั่งยืน</li>
+                            <li><strong>การสื่อสารที่ดี:</strong> พูดคุยให้เข้าใจตรงกันเสมอ</li>
+                            <li><strong>การรักษาสัมพันธ์:</strong> ดูแลมิตรภาพให้คงอยู่ยาวนาน</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <h2 class="text-2xl font-bold text-center text-gray-900">5. สติปัญญาเหนือกว่ากำลัง</h2>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <ul class="list-inside list-disc text-gray-700 space-y-1 text-left w-full">
+                            <li><strong>การวางแผนและกลยุทธ์:</strong> คืออาวุธที่ทรงพลังที่สุด</li>
+                            <li><strong>การใช้เล่ห์เหลี่ยมและอุบาย:</strong> พลิกแพลงเพื่อชิงความได้เปรียบ</li>
+                            <li><strong>การเจรจาต่อรอง:</strong> ใช้คำพูดแทนการใช้กำลัง</li>
+                            <li><strong>การแก้ปัญหาเฉพาะหน้า:</strong> มีไหวพริบและปฏิภาณ</li>
+                            <li><strong>การเรียนรู้และพัฒนาตนเอง:</strong> หมั่นลับสติปัญญาเสมอ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-face flashcard-front">
+                        <h2 class="text-2xl font-bold text-center text-gray-900">6. โอกาสและความพร้อม</h2>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <ul class="list-inside list-disc text-gray-700 space-y-1 text-left w-full">
+                            <li><strong>การมองเห็นโอกาส:</strong> ในทุกวิกฤตมีโอกาสซ่อนอยู่</li>
+                            <li><strong>การเตรียมความพร้อม:</strong> คนที่พร้อมเท่านั้นที่จะคว้าโอกาสได้</li>
+                            <li><strong>ความกล้าตัดสินใจ:</strong> เมื่อโอกาสมาถึง ต้องกล้าที่จะคว้าไว้</li>
+                            <li><strong>การลงมือทำอย่างรวดเร็ว:</strong> โอกาสไม่เคยรอใคร</li>
+                            <li><strong>การประเมินความเสี่ยง:</strong> กล้าแต่ไม่บ้าบิ่น</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 7 -->
+             <div class="flashcard-container sm:col-span-2 lg:col-span-1 lg:col-start-2">
+                <div class="flashcard" style="height: 350px;">
+                    <div class="flashcard-face flashcard-front">
+                        <h2 class="text-2xl font-bold text-center text-gray-900">7. คุณธรรมและความถูกต้อง</h2>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <div class="w-full">
+                            <p class="text-center font-semibold mb-2">อำนาจที่ปราศจากคุณธรรมย่อมไม่ยั่งยืน</p>
+                            <div class="text-sm space-y-2">
+                                <p><strong>เล่าปี่:</strong> ปกครองด้วยความเมตตา ได้ใจคน สร้างความยั่งยืน</p>
+                                <p><strong>โจโฉ:</strong> เก่งแต่ขาดคุณธรรม คนเกรงกลัวแต่ไม่รัก</p>
+                                <p><strong>ซุนกวน:</strong> รักษาสมดุล ปกป้องบ้านเมือง ยืนหยัดได้ยาวนาน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.flashcard');
+        cards.forEach(card => {
+            card.addEventListener('click', function () {
+                card.classList.toggle('is-flipped');
+            });
+        });
+    </script>
+
+</body>
+</html>
