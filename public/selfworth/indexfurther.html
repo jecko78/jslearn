@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: 7 Ways to Unlock Self-Worth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #118AB2;
+            font-size: 2rem;
+            transform: rotate(90deg);
+        }
+        @media (min-width: 768px) {
+            .flow-arrow {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body class="text-[#073B4C]">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#073B4C] mb-4">You Are Worthy</h1>
+            <p class="text-lg md:text-xl text-[#118AB2] max-w-3xl mx-auto">This is a guide to unlocking the powerful belief that you are good enough. Let's explore seven practical methods to build self-worth and transform your mindset from self-doubt to self-celebration.</p>
+        </header>
+
+        <main>
+            <section id="overview" class="mb-16">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">The 7 Pillars of Self-Worth</h2>
+                    <p class="text-center text-gray-600 mb-6">These seven practices work together to form a strong foundation for self-esteem. Each one is a tool you can use daily to shift your perspective and build confidence. This chart shows how each pillar contributes to the whole picture of a healthier mindset.</p>
+                    <div class="chart-container">
+                        <canvas id="pillarsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="methods" class="mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Practical Steps to a Better Mindset</h2>
+                 <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Building self-worth is a journey, not a destination. It starts with small, consistent actions. Below are seven key strategies you can begin implementing today. Explore each card to learn how these simple changes can have a profound impact on your well-being.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4">⚖️</div>
+                        <h3 class="text-xl font-bold mb-2">1. Stop Comparing</h3>
+                        <p class="text-gray-600">Your journey is unique. Focus on your own progress and path instead of measuring your life against someone else's highlight reel. This is the first and most critical step.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4">🧘</div>
+                        <h3 class="text-xl font-bold mb-2">2. Be Present</h3>
+                        <p class="text-gray-600">Anxiety often stems from worrying about the future or dwelling on the past. By focusing on the "now," you ground yourself and regain a sense of control over your thoughts.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4">📔</div>
+                        <h3 class="text-xl font-bold mb-2">3. Note Good Things</h3>
+                        <p class="text-gray-600">Train your brain to see the positive. Each day, write down three things that went well. This simple habit of gratitude shifts your focus from what's lacking to what's abundant.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4">❤️</div>
+                        <h3 class="text-xl font-bold mb-2">4. Be Kind to Yourself</h3>
+                        <p class="text-gray-600">Practice self-compassion. Treat yourself with the same kindness you would offer a friend. Forgive your mistakes and acknowledge that imperfection is a part of being human.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold mb-2">5. Achieve Small Goals</h3>
+                        <p class="text-gray-600">Confidence is built on evidence. Set small, achievable goals and complete them. Each small win proves your capability and builds momentum for bigger challenges.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4">🤝</div>
+                        <h3 class="text-xl font-bold mb-2">6. Do Good for Others</h3>
+                        <p class="text-gray-600">Shift your focus outward. Helping others not only makes a difference in their lives but also generates powerful positive feelings and a sense of purpose within yourself.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center lg:col-span-3 md:col-span-2">
+                        <div class="text-5xl mb-4">🎉</div>
+                        <h3 class="text-xl font-bold mb-2">7. Celebrate Success</h3>
+                        <p class="text-gray-600">Acknowledge your hard work and progress, no matter how small. Celebration reinforces positive behavior and reminds you that your efforts are valuable and worthy of recognition.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="progress" class="mb-16">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Visualizing Your Growth</h2>
+                    <p class="text-center text-gray-600 mb-6">Building self-worth is a gradual process. This chart illustrates how consistently applying these methods can lead to a significant, positive trend in your confidence and well-being over time. Small, daily efforts compound into major personal growth.</p>
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="impact" class="mb-16">
+                 <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Impact Score of Each Method</h2>
+                     <p class="text-center text-gray-600 mb-6">While all seven methods are valuable, some may have a more immediate or powerful impact depending on the individual. This chart provides a hypothetical ranking of each method's impact score, helping you decide where you might want to focus your energy first.</p>
+                    <div class="chart-container">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="flow" class="mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">The Upward Spiral of Self-Worth</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">These methods don't work in isolation; they create a powerful, positive feedback loop. Completing one action makes the next one easier, building momentum that lifts you higher. This diagram shows how these habits connect to create a sustainable cycle of growth.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-center">
+                    <div class="bg-[#FFD166] p-4 rounded-lg shadow-md">
+                        <h4 class="font-bold">Achieve Small Goals</h4>
+                        <p class="text-sm">Builds evidence of capability</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="bg-[#06D6A0] p-4 rounded-lg shadow-md">
+                        <h4 class="font-bold">Celebrate Success</h4>
+                        <p class="text-sm">Reinforces positive action</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="bg-[#118AB2] text-white p-4 rounded-lg shadow-md">
+                        <h4 class="font-bold">Be Kind to Yourself</h4>
+                        <p class="text-sm">Increases self-compassion</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="text-gray-600">
+                Start your journey today. Pick one small step and begin building the self-worth you deserve.
+            </p>
+            <a href="flashcards.html">
+                <h2 class="text-2xl font-bold text-[#073B4C] mb-2">Ready to Practice?</h2>
+                <p class="text-[#118AB2] underline">Try our interactive flashcards to reinforce these concepts and make them a part of your daily routine.</p>
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxLength = 16) => {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const chartColors = {
+            red: '#FF6B6B',
+            yellow: '#FFD166',
+            green: '#06D6A0',
+            blue: '#118AB2',
+            darkBlue: '#073B4C',
+            teal: '#1B998B',
+            pink: '#E84855'
+        };
+
+        const pillarLabels = [
+            'Stop Comparing', 'Be Present', 'Note Good Things', 'Be Kind to Yourself', 
+            'Achieve Small Goals', 'Do Good for Others', 'Celebrate Success'
+        ].map(label => wrapLabel(label));
+
+        const pillarData = {
+            labels: pillarLabels,
+            datasets: [{
+                label: 'Pillar of Self-Worth',
+                data: [1, 1, 1, 1, 1, 1, 1],
+                backgroundColor: Object.values(chartColors),
+            }]
+        };
+
+        new Chart(document.getElementById('pillarsChart'), {
+            type: 'doughnut',
+            data: pillarData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+        
+        const progressData = {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+            datasets: [{
+                label: 'Self-Worth Score',
+                data: [20, 35, 45, 60, 75, 90],
+                fill: true,
+                borderColor: chartColors.green,
+                backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                tension: 0.4
+            }]
+        };
+
+        new Chart(document.getElementById('progressChart'), {
+            type: 'line',
+            data: progressData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const impactLabels = [
+            'Stop Comparing', 'Achieve Small Goals', 'Be Kind to Yourself',
+            'Celebrate Success', 'Note Good Things', 'Be Present', 'Do Good for Others'
+        ].map(label => wrapLabel(label));
+
+        const impactData = {
+            labels: impactLabels,
+            datasets: [{
+                label: 'Hypothetical Impact Score',
+                data: [95, 90, 85, 80, 75, 70, 65],
+                backgroundColor: [
+                    chartColors.red,
+                    chartColors.yellow,
+                    chartColors.green,
+                    chartColors.blue,
+                    chartColors.teal,
+                    chartColors.pink,
+                    chartColors.darkBlue
+                ],
+                borderColor: '#fff',
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('impactChart'), {
+            type: 'bar',
+            data: impactData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

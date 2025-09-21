@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือ : 7 วิธีสร้างคุณค่าในตัวเอง</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm & Inviting -->
+    <!-- Application Structure Plan: The SPA is designed as an interactive learning hub, not a linear quiz. The core structure is a central navigation grid with 7 clickable cards, each representing one of the "7 Ways." Clicking a card dynamically loads a dedicated content section. This section provides a brief explanation of the method, followed by the corresponding interactive quiz question. This non-linear, thematic approach allows users to explore concepts in any order, focusing on one topic at a time for deeper understanding and immediate reinforcement, which is more effective for learning than a simple, static quiz format. -->
+    <!-- Visualization & Content Choices: Report Info: The 7 methods and corresponding quiz questions. -> Goal: Organize, Inform, and Test Knowledge. -> Viz/Presentation Method: The core structure is a grid of interactive cards (HTML/CSS) for navigation. Each concept is presented in a dynamically updated content area with text and an interactive multiple-choice question (HTML forms). -> Interaction: Users click a card to load content, select a radio button for their answer, and click a button to get immediate visual feedback (color changes) and a textual rationale for their choice. -> Justification: Since the source is purely qualitative, traditional charts are not applicable. This interactive card and quiz format is the most effective way to translate the conceptual content into an engaging and educational experience. -> Library/Method: Vanilla JavaScript for all logic, Tailwind CSS for styling. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        .card {
+            background-color: #FEFBF6;
+            border: 1px solid #EAE0D5;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-primary {
+            background-color: #A7727D;
+            color: #FEFBF6;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #8A5C66;
+        }
+        .option-label {
+            border: 2px solid #EAE0D5;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .option-label.selected {
+            border-color: #A7727D;
+            background-color: #F8F0E5;
+        }
+        .option-label.correct {
+            border-color: #5D9C59;
+            background-color: #EBF9EB;
+        }
+        .option-label.incorrect {
+            border-color: #D24545;
+            background-color: #FDEDED;
+        }
+    </style>
+</head>
+<body class="bg-[#F8F0E5]">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#5C3D2E]">7 วิธีปลดล็อกความเชื่อ "ฉันยังดีไม่พอ"</h1>
+            <p class="text-lg text-[#A7727D] mt-2">คู่มือสำรวจและสร้างคุณค่าในตัวเองแบบอินเทอร์แอคทีฟ</p>
+        </header>
+
+        <main>
+            <section id="intro" class="text-center bg-[#FEFBF6] p-6 rounded-xl shadow-md mb-8 border border-[#EAE0D5]">
+                <p class="text-base md:text-lg text-[#5C3D2E]">ความรู้สึก "ดีไม่พอ" เป็นสิ่งที่หลายคนเคยเผชิญ แต่เราสามารถเรียนรู้และฝึกฝนเพื่อก้าวข้ามความเชื่อนั้นได้ ลองเลือกหัวข้อด้านล่างเพื่อสำรวจแต่ละวิธีและทดสอบความเข้าใจของคุณไปพร้อมกัน</p>
+            </section>
+            
+            <section id="navigation" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            </section>
+
+            <section id="content-display" class="hidden bg-[#FEFBF6] p-6 md:p-8 rounded-xl shadow-lg border border-[#EAE0D5]">
+                <div id="content-container"></div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                id: 0,
+                title: "เลิกเปรียบเทียบตัวเองกับคนอื่น",
+                description: "การเปรียบเทียบคือจุดเริ่มต้นของความรู้สึกด้อยค่า การเดินทางของแต่ละคนไม่เหมือนกัน การจดจ่อกับเส้นทางและความก้าวหน้าของตัวเองคือรากฐานที่สำคัญที่สุดในการสร้างคุณค่าที่แท้จริงจากภายใน",
+                question: "จากมายด์แมป ข้อใดคือขั้นตอนแรกที่สำคัญที่สุดในการเอาชนะความรู้สึก \"ดีไม่พอ\"?",
+                options: [
+                    "ทำงานให้หนักขึ้นเพื่อพิสูจน์ตัวเอง",
+                    "เลิกเปรียบเทียบตัวเองกับคนอื่น",
+                    "ตั้งเป้าหมายที่ใหญ่และท้าทายขึ้น",
+                    "ใช้เวลาอยู่คนเดียวเพื่อทบทวนตัวเอง"
+                ],
+                correctAnswer: "เลิกเปรียบเทียบตัวเองกับคนอื่น"
+            },
+            {
+                id: 1,
+                title: "อยู่กับปัจจุบัน",
+                description: "ความกังวลมักเกิดจากการจมอยู่กับความผิดพลาดในอดีตหรือความไม่แน่นอนในอนาคต การฝึกฝนให้อยู่กับปัจจุบันขณะ (Mindfulness) ช่วยให้เราจดจ่อกับสิ่งที่ควบคุมได้ ลดความฟุ้งซ่าน และสร้างความสงบในจิตใจ",
+                question: "การ \"อยู่กับปัจจุบัน\" ช่วยลดความรู้สึก \"ดีไม่พอ\" ได้อย่างไร?",
+                options: [
+                    "ทำให้เราวางแผนอนาคตได้สมบูรณ์แบบ",
+                    "ช่วยให้เราจดจ่อกับสิ่งที่ควบคุมได้และลดความกังวลจากอดีตและอนาคต",
+                    "ทำให้เราลืมความผิดพลาดที่เคยทำไปได้ทั้งหมด",
+                    "ทำให้เรามีเวลาว่างในการทำกิจกรรมที่ชอบมากขึ้น"
+                ],
+                correctAnswer: "ช่วยให้เราจดจ่อกับสิ่งที่ควบคุมได้และลดความกังวลจากอดีตและอนาคต"
+            },
+            {
+                id: 2,
+                title: "จดบันทึกสิ่งดีๆ",
+                description: "ในแต่ละวันมักมีเรื่องราวดีๆ เกิดขึ้นเสมอ แม้จะเป็นเรื่องเล็กน้อยก็ตาม การจดบันทึกสิ่งเหล่านี้ช่วยฝึกให้สมองมองเห็นและจดจำด้านบวกของชีวิต เปลี่ยนมุมมองจากความขาดแคลนไปสู่ความรู้สึกขอบคุณและเต็มเปี่ยม",
+                question: "ประโยชน์หลักของการ \"จดบันทึกสิ่งดีๆ ที่เกิดขึ้นในแต่ละวัน\" คืออะไร?",
+                options: [
+                    "เพื่อฝึกทักษะการเขียนให้ดีขึ้น",
+                    "เพื่อเก็บไว้อ่านเป็นความทรงจำในอนาคต",
+                    "เพื่อเปลี่ยนมุมมองให้เรามองเห็นด้านบวกของชีวิตมากขึ้น",
+                    "เพื่อแสดงให้คนอื่นเห็นว่าชีวิตของเราดีแค่ไหน"
+                ],
+                correctAnswer: "เพื่อเปลี่ยนมุมมองให้เรามองเห็นด้านบวกของชีวิตมากขึ้น"
+            },
+            {
+                id: 3,
+                title: "ใจดีกับตัวเอง (Self-Compassion)",
+                description: "ไม่มีใครสมบูรณ์แบบ ความผิดพลาดเป็นส่วนหนึ่งของการเรียนรู้ การฝึกใจดีกับตัวเองคือการปฏิบัติต่อตัวเองด้วยความเมตตาและให้อภัย เหมือนที่เราปฏิบัติต่อเพื่อนสนิท สิ่งนี้ช่วยลดการวิจารณ์ตัวเองที่รุนแรงเกินไป",
+                question: "\"การฝึกใจดีกับตัวเอง\" (Self-Compassion) หมายถึงข้อใด?",
+                options: [
+                    "การตามใจตัวเองในทุกๆ เรื่องที่อยากทำ",
+                    "การหลีกเลี่ยงงานที่ท้าทายเพื่อป้องกันความล้มเหลว",
+                    "การไม่สนใจคำวิจารณ์ของคนอื่นเลย",
+                    "การให้อภัยในความผิดพลาดและปฏิบัติต่อตัวเองเหมือนเพื่อน"
+                ],
+                correctAnswer: "การให้อภัยในความผิดพลาดและปฏิบัติต่อตัวเองเหมือนเพื่อน"
+            },
+            {
+                id: 4,
+                title: "ตั้งเป้าหมายเล็กๆ แล้วทำให้สำเร็จ",
+                description: "ความสำเร็จใหญ่ๆ มักเกิดจากการสะสมความสำเร็จเล็กๆ การตั้งเป้าหมายที่จัดการได้และลงมือทำจนสำเร็จ จะสร้างหลักฐานที่เป็นรูปธรรมให้เราเห็นถึงความสามารถของตัวเอง ช่วยบ่มเพาะความมั่นใจและความเชื่อมั่นในตนเองให้เติบโตขึ้น",
+                question: "การ \"ตั้งเป้าหมายเล็กๆ แล้วทำให้สำเร็จ\" ส่งผลดีอย่างไรต่อความรู้สึกของเรา?",
+                options: [
+                    "ทำให้เราไม่จำเป็นต้องตั้งเป้าหมายใหญ่อีกต่อไป",
+                    "ช่วยสร้างความมั่นใจและความรู้สึกว่าเราสามารถทำสิ่งต่างๆ ให้สำเร็จได้",
+                    "เป็นวิธีที่เร็วที่สุดในการประสบความสำเร็จในชีวิต",
+                    "ทำให้เรามีเรื่องไปอวดเพื่อนๆ ได้"
+                ],
+                correctAnswer: "ช่วยสร้างความมั่นใจและความรู้สึกว่าเราสามารถทำสิ่งต่างๆ ให้สำเร็จได้"
+            },
+            {
+                id: 5,
+                title: "ทำดีกับคนอื่น",
+                description: "การทำความดีหรือช่วยเหลือผู้อื่นโดยไม่หวังผลตอบแทน ช่วยเบี่ยงเบนความสนใจจากปัญหาของตัวเองมาสู่การสร้างประโยชน์ให้ผู้อื่น การกระทำนี้สร้างความรู้สึกดีๆ ความรู้สึกมีคุณค่า และเชื่อมโยงเราเข้ากับโลกรอบตัวในเชิงบวก",
+                question: "ทำไมการ \"ทำดีกับคนอื่น\" ถึงเป็นหนึ่งในวิธีปลดล็อกความเชื่อว่าเราดีไม่พอ?",
+                options: [
+                    "เพราะจะทำให้คนอื่นต้องมาทำดีกับเราตอบแทน",
+                    "เพราะมันช่วยสร้างความรู้สึกดีๆ และเบี่ยงเบนความสนใจจากเรื่องของตัวเอง",
+                    "เพราะทำให้เรารู้สึกเหนือกว่าคนที่เราได้ช่วยเหลือ",
+                    "เพราะเป็นหน้าที่ที่ทุกคนในสังคมต้องทำ"
+                ],
+                correctAnswer: "เพราะมันช่วยสร้างความรู้สึกดีๆ และเบี่ยงเบนความสนใจจากเรื่องของตัวเอง"
+            },
+            {
+                id: 6,
+                title: "เฉลิมฉลองความสำเร็จ",
+                description: "ไม่ว่าความสำเร็จจะเล็กหรือใหญ่ ล้วนมาจากความพยายามของเรา การหยุดเพื่อชื่นชมและเฉลิมฉลองให้กับความสำเร็จนั้น เป็นการให้รางวัลและตระหนักถึงคุณค่าของความพยายาม สร้างกำลังใจและแรงผลักดันให้เราก้าวต่อไป",
+                question: "ข้อใดคือเหตุผลสำคัญที่สุดที่ควร \"เฉลิมฉลองความสำเร็จของตัวเอง\" ไม่ว่าจะเล็กหรือใหญ่?",
+                options: [
+                    "เพื่อให้คนอื่นอิจฉาในความสำเร็จของเรา",
+                    "เพื่อเป็นข้ออ้างในการใช้เงินซื้อของที่อยากได้",
+                    "เพื่อเป็นการตระหนักถึงความพยายามและสร้างกำลังใจให้ตัวเองไปต่อ",
+                    "เพื่อพิสูจน์ให้คนอื่นเห็นว่าเราเก่ง"
+                ],
+                correctAnswer: "เพื่อเป็นการตระหนักถึงความพยายามและสร้างกำลังใจให้ตัวเองไปต่อ"
+            }
+        ];
+
+        const navigationContainer = document.getElementById('navigation');
+        const contentDisplay = document.getElementById('content-display');
+        const contentContainer = document.getElementById('content-container');
+
+        function createNavigation() {
+            quizData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card p-4 rounded-lg cursor-pointer text-center';
+                card.innerHTML = `<h3 class="text-xl font-semibold text-[#5C3D2E]">${index + 1}. ${item.title}</h3>`;
+                card.addEventListener('click', () => displayContent(item.id));
+                navigationContainer.appendChild(card);
+            });
+        }
+
+        function displayContent(id) {
+            const data = quizData.find(item => item.id === id);
+            if (!data) return;
+
+            contentContainer.innerHTML = `
+                <h2 class="text-3xl font-bold text-[#5C3D2E] mb-4">${data.title}</h2>
+                <p class="text-base text-[#5C3D2E] mb-6">${data.description}</p>
+                <hr class="border-[#EAE0D5] my-6">
+                <div id="quiz-section">
+                    <h3 class="text-xl font-semibold text-[#5C3D2E] mb-4">ทดสอบความเข้าใจ:</h3>
+                    <p class="text-lg text-[#5C3D2E] mb-4">${data.question}</p>
+                    <div id="options-container" class="space-y-3">
+                        ${data.options.map((option, index) => `
+                            <div>
+                                <input type="radio" name="answer" id="option${index}" value="${option}" class="hidden">
+                                <label for="option${index}" class="option-label block p-4 rounded-lg cursor-pointer text-[#5C3D2E]">
+                                    ${option}
+                                </label>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button id="check-answer-btn" class="btn-primary font-bold py-2 px-6 rounded-lg mt-6">ตรวจสอบคำตอบ</button>
+                    <div id="feedback" class="mt-4 text-lg"></div>
+                </div>
+            `;
+            contentDisplay.classList.remove('hidden');
+            
+            const options = contentContainer.querySelectorAll('label');
+            options.forEach(label => {
+                label.addEventListener('click', () => {
+                    options.forEach(l => l.classList.remove('selected'));
+                    label.classList.add('selected');
+                });
+            });
+
+            document.getElementById('check-answer-btn').addEventListener('click', () => {
+                const selectedOption = document.querySelector('input[name="answer"]:checked');
+                if (!selectedOption) {
+                    document.getElementById('feedback').textContent = "กรุณาเลือกคำตอบ";
+                    document.getElementById('feedback').className = 'mt-4 text-lg text-red-600';
+                    return;
+                }
+                
+                const isCorrect = selectedOption.value === data.correctAnswer;
+                const feedbackEl = document.getElementById('feedback');
+                
+                document.querySelectorAll('.option-label').forEach(label => {
+                    const input = document.getElementById(label.getAttribute('for'));
+                    if(input.value === data.correctAnswer) {
+                        label.classList.add('correct');
+                    }
+                    if(input.checked && !isCorrect) {
+                        label.classList.add('incorrect');
+                    }
+                });
+
+                if (isCorrect) {
+                    feedbackEl.innerHTML = `<span class="font-semibold text-green-700">ถูกต้อง!</span> การกระทำนี้ช่วยให้เราสร้างคุณค่าจากภายใน`;
+                } else {
+                    feedbackEl.innerHTML = `<span class="font-semibold text-red-700">ยังไม่ถูกต้อง</span> ลองพิจารณาดูอีกครั้งนะคะ คำตอบที่ถูกต้องคือ "${data.correctAnswer}"`;
+                }
+                document.getElementById('check-answer-btn').disabled = true;
+            });
+            contentDisplay.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        createNavigation();
+    </script>
+</body>
+</html>

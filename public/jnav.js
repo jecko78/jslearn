@@ -78,6 +78,12 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="learnsound.html">ຮຽນ Sound</a></li>
         </ul>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Human science skills
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="selfworth/index.html">Self worth</a></li>
+        </ul>
       </li>      
     </ul>
     <form class="d-flex">
