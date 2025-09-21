@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 12: Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .flashcard-container {
+            perspective: 1000px;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="max-w-md w-full">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Lesson 12: Flashcards</h1>
+            <p class="text-gray-600 mt-1">Daily Activities & Simple Present</p>
+            <a href="../quiz/12.html">
+                <button class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition duration-300">
+                    After flashcards, Click me to practice with Quiz
+                </button>
+            </a>
+        </header>
+
+        <div class="flashcard-container w-full h-64 sm:h-72">
+            <div id="flashcard" class="flashcard rounded-xl shadow-lg cursor-pointer">
+                <div class="flashcard-face bg-white rounded-xl border-4 border-green-500">
+                    <p id="card-front" class="text-3xl font-semibold text-gray-800"></p>
+                </div>
+                <div class="flashcard-face flashcard-back bg-green-500 rounded-xl border-4 border-white">
+                    <p id="card-back" class="text-2xl font-semibold text-white"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="progress" class="text-center text-gray-500 my-4 font-medium"></div>
+
+        <div class="flex justify-between items-center mt-4">
+            <button id="prev-btn" class="bg-white hover:bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                Previous
+            </button>
+            <button id="next-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                Next
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const flashcards = [
+            { front: "Wake up", back: "The first thing you do in the morning." },
+            { front: "Eat breakfast", back: "To eat the morning meal." },
+            { front: "Go to work/school", back: "To travel to your job or place of study." },
+            { front: "Come home", back: "To return to your house." },
+            { front: "Watch TV", back: "To look at shows on the television." },
+            { front: "Go to sleep", back: "To start sleeping at night." },
+            { front: "Simple Present", back: "Used for habits, routines, and things you do every day." },
+            { front: "I / You / We / They", back: "Use the base verb. Example: 'I wake up at 7 AM.'" },
+            { front: "He / She / It", back: "Add -s or -es to the verb. Example: 'She eats breakfast.'" },
+            { front: "Do you...?", back: "How to ask a question. Example: 'Do you go to work?'" },
+            { front: "Does he...?", back: "Question for he/she/it. Example: 'Does he watch TV?'" },
+            { front: "I don't...", back: "Negative form. Example: 'I don't go to sleep late.'" },
+            { front: "She doesn't...", back: "Negative for she/he/it. Example: 'She doesn't come home for lunch.'" }
+        ];
+
+        let currentCardIndex = 0;
+
+        const flashcard = document.getElementById('flashcard');
+        const cardFront = document.getElementById('card-front');
+        const cardBack = document.getElementById('card-back');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressText = document.getElementById('progress');
+
+        function updateCard() {
+            const currentCard = flashcards[currentCardIndex];
+            cardFront.textContent = currentCard.front;
+            cardBack.textContent = currentCard.back;
+            progressText.textContent = `Card ${currentCardIndex + 1} of ${flashcards.length}`;
+            
+            flashcard.classList.remove('is-flipped');
+            
+            prevBtn.disabled = currentCardIndex === 0;
+            nextBtn.disabled = currentCardIndex === flashcards.length - 1;
+        }
+
+        flashcard.addEventListener('click', () => {
+            flashcard.classList.toggle('is-flipped');
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                updateCard();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentCardIndex < flashcards.length - 1) {
+                currentCardIndex++;
+                updateCard();
+            }
+        });
+
+        updateCard();
+    </script>
+
+</body>
+</html>

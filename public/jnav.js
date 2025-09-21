@@ -67,6 +67,7 @@ jnav.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
           css practice Items
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="big5-6pm/index.html">English Level 01</a></li>
           <li><a class="dropdown-item" href="L_canvas/learncanva1.html">ຮຽນ Particle</a></li>
           <li><a class="dropdown-item" href="L_canvas/learncanva2.html">ຮຽນ Particle2</a></li>
           <li><a class="dropdown-item" href="L_canvas/learncanva3.html">ຮຽນ Particle3</a></li>

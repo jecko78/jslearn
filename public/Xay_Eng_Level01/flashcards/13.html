@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 13: Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .flashcard-container {
+            perspective: 1000px;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="max-w-md w-full">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Lesson 13: Flashcards</h1>
+            <p class="text-gray-600 mt-1">Abilities & Hobbies (Can/Can't)</p>
+            <a href="../quiz/13.html">
+                <button class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition duration-300">
+                    After flashcards, Click me to practice with Quiz
+                </button>
+            </a>
+        </header>
+
+        <div class="flashcard-container w-full h-64 sm:h-72">
+            <div id="flashcard" class="flashcard rounded-xl shadow-lg cursor-pointer">
+                <div class="flashcard-face bg-white rounded-xl border-4 border-purple-500">
+                    <p id="card-front" class="text-3xl font-semibold text-gray-800"></p>
+                </div>
+                <div class="flashcard-face flashcard-back bg-purple-500 rounded-xl border-4 border-white">
+                    <p id="card-back" class="text-2xl font-semibold text-white"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="progress" class="text-center text-gray-500 my-4 font-medium"></div>
+
+        <div class="flex justify-between items-center mt-4">
+            <button id="prev-btn" class="bg-white hover:bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                Previous
+            </button>
+            <button id="next-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                Next
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const flashcards = [
+            { front: "Can", back: "Used to talk about ability. What you are able to do." },
+            { front: "Can't", back: "Used to talk about a lack of ability. (Cannot)" },
+            { front: "Sing", back: "To make musical sounds with your voice." },
+            { front: "Dance", back: "To move your body to music." },
+            { front: "Swim", back: "To move through water using your body." },
+            { front: "Cook", back: "To prepare food by heating it." },
+            { front: "Play soccer", back: "To play a game with a ball using your feet." },
+            { front: "Can you...?", back: "How to ask about ability. Example: 'Can you swim?'" },
+            { front: "Yes, I can.", back: "A positive short answer to a 'can' question." },
+            { front: "No, I can't.", back: "A negative short answer to a 'can' question." },
+            { front: "What can you do?", back: "A question to ask about someone's hobbies or abilities." }
+        ];
+
+        let currentCardIndex = 0;
+
+        const flashcard = document.getElementById('flashcard');
+        const cardFront = document.getElementById('card-front');
+        const cardBack = document.getElementById('card-back');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressText = document.getElementById('progress');
+
+        function updateCard() {
+            const currentCard = flashcards[currentCardIndex];
+            cardFront.textContent = currentCard.front;
+            cardBack.textContent = currentCard.back;
+            progressText.textContent = `Card ${currentCardIndex + 1} of ${flashcards.length}`;
+            
+            flashcard.classList.remove('is-flipped');
+            
+            prevBtn.disabled = currentCardIndex === 0;
+            nextBtn.disabled = currentCardIndex === flashcards.length - 1;
+        }
+
+        flashcard.addEventListener('click', () => {
+            flashcard.classList.toggle('is-flipped');
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                updateCard();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentCardIndex < flashcards.length - 1) {
+                currentCardIndex++;
+                updateCard();
+            }
+        });
+
+        updateCard();
+    </script>
+
+</body>
+</html>

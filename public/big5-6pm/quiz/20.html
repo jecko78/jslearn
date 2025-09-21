@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 20: Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .quiz-option.selected {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+            border-color: #2563eb; /* blue-600 */
+        }
+        .quiz-option.correct {
+            background-color: #22c55e; /* green-500 */
+            color: white;
+            border-color: #16a34a; /* green-600 */
+        }
+        .quiz-option.incorrect {
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            border-color: #dc2626; /* red-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div id="quiz-container" class="max-w-xl w-full bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Lesson 20: Quiz</h1>
+            <p class="text-gray-600 mt-1">Making Plans</p>
+        </header>
+
+        <div id="question-area">
+            <h2 id="question-text" class="text-xl font-semibold text-gray-700 mb-2 text-center"></h2>
+            <p id="progress-text" class="text-center text-gray-500 mb-6 font-medium"></p>
+            <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Options will be inserted here -->
+            </div>
+        </div>
+
+        <div id="result-area" class="hidden text-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Quiz Complete!</h2>
+            <p class="text-lg text-gray-600 mb-4">You scored <span id="score-text" class="font-bold text-green-600"></span> out of <span id="total-text" class="font-bold"></span>.</p>
+            <div id="review-container" class="text-left my-4"></div>
+            <div class="flex flex-col sm:flex-row sm:justify-center mt-6">
+                <button id="try-again-btn" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                    Try Again
+                </button>
+                <button id="next-lesson-btn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105 mt-2 sm:mt-0 sm:ml-4">
+                    Next Lesson
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "How do you ask if someone is available on the weekend?",
+                options: ["Are you busy on Saturday?", "What are you doing on Sunday?", "Are you free this weekend?", "All of the above"],
+                answer: "All of the above"
+            },
+            {
+                question: "Which phrase is a way to suggest an activity?",
+                options: ["I have a plan.", "Would you like to get coffee?", "What time is it?", "See you later."],
+                answer: "Would you like to get coffee?"
+            },
+            {
+                question: "How can you accept an invitation?",
+                options: ["No, thank you.", "Maybe later.", "That sounds fun!", "I'm not sure."],
+                answer: "That sounds fun!"
+            },
+            {
+                question: "If you are not available, you can say...",
+                options: ["Yes, of course.", "I'm sorry, I'm busy.", "What time?", "That's a good idea."],
+                answer: "I'm sorry, I'm busy."
+            },
+            {
+                question: "What do you ask to decide on a location to meet?",
+                options: ["When should we meet?", "Why are we meeting?", "Where should we meet?", "Who is coming?"],
+                answer: "Where should we meet?"
+            },
+            {
+                question: "'Let's meet at 7 PM.' is a response to which question?",
+                options: ["Where should we meet?", "What time should we meet?", "Are you free at 7 PM?", "Do you like movies?"],
+                answer: "What time should we meet?"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        const questionArea = document.getElementById('question-area');
+        const resultArea = document.getElementById('result-area');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const progressText = document.getElementById('progress-text');
+        const scoreText = document.getElementById('score-text');
+        const totalText = document.getElementById('total-text');
+        const tryAgainBtn = document.getElementById('try-again-btn');
+        const reviewContainer = document.getElementById('review-container');
+        const nextLessonBtn = document.getElementById('next-lesson-btn');
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            resultArea.classList.add('hidden');
+            questionArea.classList.remove('hidden');
+            reviewContainer.innerHTML = '';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            questionText.textContent = currentQuestion.question;
+            progressText.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            optionsContainer.innerHTML = '';
+
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('quiz-option', 'p-4', 'border-2', 'rounded-lg', 'transition', 'duration-200', 'hover:bg-gray-200', 'text-left');
+                button.onclick = () => selectAnswer(button, option);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(button, selectedOption) {
+            userAnswers[currentQuestionIndex] = selectedOption;
+            
+            Array.from(optionsContainer.children).forEach(btn => {
+                btn.disabled = true;
+                if (btn.textContent === selectedOption) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            }, 1000);
+        }
+
+        function showResult() {
+            questionArea.classList.add('hidden');
+            resultArea.classList.remove('hidden');
+            
+            score = 0;
+            reviewContainer.innerHTML = '<h3 class="text-xl font-bold mb-2">Review Your Answers:</h3>';
+            
+            quizData.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const correctAnswer = question.answer;
+                
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('p-3', 'mb-2', 'rounded-lg');
+                
+                let answerText = `<strong>Q${index + 1}:</strong> ${question.question}<br>Your answer: <strong>${userAnswer || "No answer"}</strong>`;
+
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    resultItem.classList.add('bg-green-100');
+                    answerText += ` <span class="text-green-700 font-bold">(Correct)</span>`;
+                } else {
+                    resultItem.classList.add('bg-red-100');
+                    answerText += ` <span class="text-red-700 font-bold">(Incorrect)</span><br>Correct answer: <strong>${correctAnswer}</strong>`;
+                }
+                
+                resultItem.innerHTML = answerText;
+                reviewContainer.appendChild(resultItem);
+            });
+
+            scoreText.textContent = score;
+            totalText.textContent = quizData.length;
+        }
+
+        tryAgainBtn.addEventListener('click', startQuiz);
+
+        nextLessonBtn.addEventListener('click', () => {
+            // In a real application, you would navigate to the next lesson file.
+            // For this example, we'll just show an alert.
+            // alert("Congratulations! Moving to the next lesson.");
+            window.location.href = '21.html'; // Navigate to the next lesson
+        });
+
+        startQuiz();
+    </script>
+</body>
+</html>
+

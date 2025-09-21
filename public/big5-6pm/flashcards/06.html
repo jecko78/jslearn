@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            perspective: 1000px;
+        }
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="max-w-lg w-full text-center">
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Lesson 6: Flashcards</h1>
+            <p class="text-gray-600 mt-1">In the Classroom</p>
+            <a href="../quiz/06.html">
+                <button class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition duration-300">
+                    After flashcards, Click me to practice with Quiz
+                </button>
+            </a>
+        </header>
+
+        <!-- Flashcard -->
+        <div id="flashcard" class="flashcard bg-transparent w-full h-64 mx-auto cursor-pointer mb-6">
+            <div class="flashcard-inner">
+                <div id="flashcard-front" class="flashcard-front bg-white shadow-lg text-gray-800 text-3xl font-bold">
+                    <!-- Front content here -->
+                </div>
+                <div id="flashcard-back" class="flashcard-back bg-blue-500 shadow-lg text-white text-2xl font-semibold">
+                    <!-- Back content here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex items-center justify-between">
+            <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-md">
+                &larr; Previous
+            </button>
+            <p id="progress-text" class="text-gray-600 font-medium">1 / 20</p>
+            <button id="next-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-md">
+                Next &rarr;
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const cardData = [
+            { front: "Desk", back: "A piece of furniture with a flat top for working on." },
+            { front: "Blackboard / Board", back: "A large, dark surface for writing on with chalk." },
+            { front: "Chalk", back: "A stick of soft white rock used for writing on a blackboard." },
+            { front: "Notebook", back: "A book of plain paper for writing notes." },
+            { front: "Eraser", back: "An object used for removing pencil marks." },
+            { front: "Pen", back: "An instrument for writing with ink." },
+            { front: "Pencil", back: "An instrument for writing or drawing, with a core of graphite." },
+            { front: "Backpack / Schoolbag", back: "A bag for carrying books, usually on your back." },
+            { front: "Have a seat / Sit down.", back: "A command telling someone to sit." },
+            { front: "Stand up.", back: "A command telling someone to rise to their feet." },
+            { front: "Quiet please.", back: "A request to be silent." },
+            { front: "Repeat", back: "A command to say something again." },
+            { front: "Raise your hand.", back: "A command to lift your hand, often to ask a question." },
+            { front: "This is...", back: "Used for a single object NEAR you. (e.g., 'This is a pen.')" },
+            { front: "These are...", back: "Used for multiple objects NEAR you. (e.g., 'These are my books.')" },
+            { front: "That is...", back: "Used for a single object FAR from you. (e.g., 'That is the blackboard.')" },
+            { front: "Those are...", back: "Used for multiple objects FAR from you. (e.g., 'Those are desks.')" },
+            { front: "Who is this?", back: "Used to ask about a person NEAR you." },
+            { front: "Who is that?", back: "Used to ask about a person FAR from you." },
+            { front: "What are those?", back: "Used to ask about multiple objects FAR from you." },
+        ];
+
+        let currentCardIndex = 0;
+
+        const flashcard = document.getElementById('flashcard');
+        const flashcardFront = document.getElementById('flashcard-front');
+        const flashcardBack = document.getElementById('flashcard-back');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressText = document.getElementById('progress-text');
+
+        function updateCard() {
+            const card = cardData[currentCardIndex];
+            flashcardFront.textContent = card.front;
+            flashcardBack.textContent = card.back;
+            progressText.textContent = `${currentCardIndex + 1} / ${cardData.length}`;
+            flashcard.classList.remove('flipped');
+        }
+
+        flashcard.addEventListener('click', () => {
+            flashcard.classList.toggle('flipped');
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentCardIndex = (currentCardIndex - 1 + cardData.length) % cardData.length;
+            updateCard();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentCardIndex = (currentCardIndex + 1) % cardData.length;
+            updateCard();
+        });
+
+        // Initial card load
+        updateCard();
+    </script>
+</body>
+</html>

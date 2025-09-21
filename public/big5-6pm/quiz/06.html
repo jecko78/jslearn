@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .quiz-option.correct {
+            background-color: #22c55e; /* green-500 */
+            color: white;
+            border-color: #16a34a; /* green-600 */
+        }
+        .quiz-option.incorrect {
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            border-color: #dc2626; /* red-600 */
+        }
+        .quiz-option:disabled {
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div id="quiz-container" class="max-w-xl w-full bg-white p-8 rounded-2xl shadow-lg text-center">
+        <!-- Quiz Header -->
+        <div id="quiz-header">
+            <h1 class="text-3xl font-bold text-gray-800">Lesson 6 Quiz</h1>
+            <p class="text-gray-600 mt-2">Test your knowledge of classroom vocabulary.</p>
+        </div>
+
+        <!-- Quiz Question -->
+        <div id="quiz-question" class="mt-8 hidden">
+            <p id="question-text" class="text-xl font-semibold text-gray-700 mb-6"></p>
+            <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Options will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Quiz Results -->
+        <div id="results-container" class="mt-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800">Quiz Complete!</h2>
+            <p class="text-gray-600 mt-4 text-lg">You scored <span id="score-text" class="font-bold"></span> out of <span id="total-text" class="font-bold"></span>.</p>
+             <div id="review-container" class="mt-6 text-left hidden">
+                <h3 class="font-bold text-lg mb-2">Review Your Answers:</h3>
+                <ul id="review-list" class="list-disc list-inside"></ul>
+            </div>
+            <button id="retry-btn" class="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-md">
+                Try Again
+            </button>
+        </div>
+        
+        <!-- Start Button -->
+        <button id="start-btn" class="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-md">
+            Start Quiz
+        </button>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "You write on the ______ with chalk.",
+                options: ["desk", "paper", "blackboard", "notebook"],
+                answer: "blackboard"
+            },
+            {
+                question: "To point to something NEAR you, you say...",
+                options: ["'That is a...'", "'This is a...'", "'Those are...'", "'It is a...'"],
+                answer: "'This is a...'"
+            },
+            {
+                question: "To point to MANY things FAR from you, you say...",
+                options: ["'This is...'", "'These are...'", "'That is...'", "'Those are...'"],
+                answer: "'Those are...'"
+            },
+            {
+                question: "A teacher might say '______ your hand, please' if you have a question.",
+                options: ["Raise", "Put", "Stand", "Sit"],
+                answer: "Raise"
+            },
+            {
+                question: "What is the plural of 'this'?",
+                options: ["that", "these", "those", "them"],
+                answer: "these"
+            },
+            {
+                question: "You carry your books in a...",
+                options: ["wallet", "purse", "backpack", "pocket"],
+                answer: "backpack"
+            },
+            {
+                question: "'What is ____?' when pointing to a single book far away.",
+                options: ["this", "that", "these", "those"],
+                answer: "that"
+            },
+            {
+                question: "The teacher tells the students to be quiet by saying...",
+                options: ["'Stand up.'", "'Repeat.'", "'Listen.'", "'Quiet please.'"],
+                answer: "'Quiet please.'"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let incorrectAnswers = [];
+
+        const quizHeader = document.getElementById('quiz-header');
+        const startBtn = document.getElementById('start-btn');
+        const quizQuestion = document.getElementById('quiz-question');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreText = document.getElementById('score-text');
+        const totalText = document.getElementById('total-text');
+        const retryBtn = document.getElementById('retry-btn');
+        const reviewContainer = document.getElementById('review-container');
+        const reviewList = document.getElementById('review-list');
+
+
+        startBtn.addEventListener('click', startQuiz);
+        retryBtn.addEventListener('click', retryQuiz);
+
+        function startQuiz() {
+            startBtn.classList.add('hidden');
+            quizHeader.classList.add('hidden');
+            resultsContainer.classList.add('hidden');
+            quizQuestion.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            score = 0;
+            incorrectAnswers = [];
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            questionText.textContent = currentQuestion.question;
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('quiz-option', 'w-full', 'bg-white', 'hover:bg-gray-200', 'text-gray-800', 'font-semibold', 'py-3', 'px-4', 'border', 'border-gray-300', 'rounded-lg', 'shadow-sm', 'transition');
+                button.addEventListener('click', selectAnswer);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(e) {
+            const selectedButton = e.target;
+            const answer = quizData[currentQuestionIndex].answer;
+
+            Array.from(optionsContainer.children).forEach(button => {
+                button.disabled = true;
+                if (button.textContent === answer) {
+                    button.classList.add('correct');
+                }
+            });
+
+            if (selectedButton.textContent === answer) {
+                score++;
+            } else {
+                selectedButton.classList.add('incorrect');
+                incorrectAnswers.push({
+                    question: quizData[currentQuestionIndex].question,
+                    yourAnswer: selectedButton.textContent,
+                    correctAnswer: answer
+                });
+            }
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) {
+                    showQuestion();
+                } else {
+                    showResults();
+                }
+            }, 1500);
+        }
+
+        function showResults() {
+            quizQuestion.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            quizHeader.classList.remove('hidden');
+            scoreText.textContent = score;
+            totalText.textContent = quizData.length;
+
+            if (incorrectAnswers.length > 0) {
+                reviewContainer.classList.remove('hidden');
+                reviewList.innerHTML = '';
+                incorrectAnswers.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>Q:</strong> ${item.question}<br><strong>Your answer:</strong> ${item.yourAnswer} | <strong>Correct answer:</strong> ${item.correctAnswer}`;
+                    li.classList.add('mb-2');
+                    reviewList.appendChild(li);
+                });
+            } else {
+                 reviewContainer.classList.add('hidden');
+            }
+        }
+
+        function retryQuiz() {
+            startQuiz();
+        }
+    </script>
+
+</body>
+</html>
