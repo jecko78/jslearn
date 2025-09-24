@@ -1,0 +1,24 @@
+/* style.css */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    padding: 2em;
+    cursor: default;
+}
+
+p {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+p:hover {
+    background-color: #f0f0f0;
+}
+
+/* This class is added by JavaScript to the currently speaking paragraph */
+p.speaking {
+    background-color: #cce5ff;
+    color: #004085;
+}

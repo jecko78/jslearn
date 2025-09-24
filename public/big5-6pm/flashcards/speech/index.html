@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Speak Paragraphs</title>
+    <link rel="stylesheet" href="style.css">
+</head><body>
+    <h1>Expert Text-to-Speech Demo 🔊</h1>
+    <p>Click on any paragraph to hear it read aloud. This demonstrates an efficient and robust implementation.</p>
+    <p>This approach uses event delegation, which means only one event listener is used for the entire page. This is far more performant than adding a listener to every single paragraph, especially on pages with a lot of content.</p>
+    <p>It also manages the speech state. If you click this paragraph while another is being read, the first one will stop, and this one will begin. If you click this paragraph a second time while it's being read, it will stop speaking.</p>
+
+    <script src="script.js"></script>
+</body>
+</html>
