@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8: Interactive Quiz & Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A three-part SPA. First, a 'Learn' section with interactive cards to review vocabulary and grammar rules, enhancing understanding before the test. Second, a 'Practice' section which is the interactive quiz itself, converting the static sheet into an engaging experience with various input methods (selection, dropdowns, text input) for immediate feedback. Third, a 'Results' section that appears after submission, showing the score and offering a chance to retry. This structure turns a passive quiz into an active learning cycle, which is more effective for retention and user engagement. -->
+    <!-- Visualization & Content Choices: Report Info: Vocabulary Matching -> Goal: Test word association -> Method: Click-to-match lists -> Interaction: User clicks a word, then its definition; JS provides instant feedback (green for correct, red for incorrect) -> Justification: More engaging than static matching, provides immediate reinforcement. Report Info: Fill-in-the-blanks -> Goal: Test contextual usage -> Method: HTML sentences with <select> dropdowns -> Interaction: User selects from a limited list -> Justification: Prevents typos, is intuitive and standard for this task. Report Info: Make it Negative -> Goal: Test grammar rule application -> Method: Text input fields -> Interaction: User types the full negative command -> Justification: Directly assesses the user's ability to construct sentences based on the rule. NO SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .quiz-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .learn-card {
+            background-color: #f1f5f9; /* slate-100 */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .learn-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+        .match-item {
+            cursor: pointer;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0; /* slate-200 */
+            border-radius: 0.5rem;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .match-item:hover {
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .match-item.selected {
+            border-color: #3b82f6; /* blue-500 */
+            background-color: #dbeafe; /* blue-100 */
+            font-weight: 600;
+        }
+        .match-item.correct {
+            border-color: #22c55e; /* green-500 */
+            background-color: #dcfce7; /* green-100 */
+            cursor: default;
+        }
+        .match-item.incorrect-flash {
+            border-color: #ef4444; /* red-500 */
+            background-color: #fee2e2; /* red-100 */
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #cbd5e1; /* slate-300 */
+            border-radius: 0.375rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #3b82f6; /* blue-500 */
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+        }
+        .correct-answer {
+            border-color: #22c55e !important;
+        }
+        .incorrect-answer {
+            border-color: #ef4444 !important;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-slate-800">Lesson 8: Location & Commands</h1>
+            <p class="text-slate-600 mt-2 text-lg">First, review the concepts. Then, test your knowledge!</p>
+        </header>
+
+        <!-- Learn Section -->
+        <section id="learn-section" class="quiz-card">
+            <h2 class="text-2xl font-bold text-slate-700 mb-6 text-center">Learn the Concepts</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-semibold text-lg text-slate-600 mb-4 text-center">📍 Location Words</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="learn-card"><span class="icon">➡️</span><p class="font-semibold mt-2">Here</p><p class="text-sm text-slate-500">Near you</p></div>
+                        <div class="learn-card"><span class="icon">🗺️</span><p class="font-semibold mt-2">There</p><p class="text-sm text-slate-500">Far from you</p></div>
+                        <div class="learn-card"><span class="icon">🏠</span><p class="font-semibold mt-2">Inside</p><p class="text-sm text-slate-500">In a room/building</p></div>
+                        <div class="learn-card"><span class="icon">🌳</span><p class="font-semibold mt-2">Outside</p><p class="text-sm text-slate-500">Not in a building</p></div>
+                        <div class="learn-card"><span class="icon">🌍</span><p class="font-semibold mt-2">Everywhere</p><p class="text-sm text-slate-500">In all places</p></div>
+                        <div class="learn-card"><span class="icon">❓</span><p class="font-semibold mt-2">Nowhere</p><p class="text-sm text-slate-500">Not in any place</p></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg text-slate-600 mb-4 text-center">🗣️ Commands</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-green-100 p-4 rounded-lg">
+                            <h4 class="font-bold text-green-800 text-center">Positive: "Do this!"</h4>
+                            <ul class="mt-2 text-green-700 space-y-1 text-center">
+                                <li>Go to the door.</li>
+                                <li>Look here.</li>
+                                <li>Sit down.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-100 p-4 rounded-lg">
+                            <h4 class="font-bold text-red-800 text-center">Negative: "Don't do this!"</h4>
+                             <ul class="mt-2 text-red-700 space-y-1 text-center">
+                                <li><span class="font-bold">Don't</span> go to the door.</li>
+                                <li><span class="font-bold">Do not</span> look here.</li>
+                                <li><span class="font-bold">Don't</span> sit down.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice (Quiz) Section -->
+        <section id="practice-section" class="quiz-card">
+            <h2 class="text-2xl font-bold text-slate-700 mb-6 text-center">Practice Your Knowledge</h2>
+            <form id="quiz-form" class="space-y-8">
+
+                <!-- Part 1: Matching -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-1">Part 1: Vocabulary Matching</h3>
+                    <p class="text-sm text-slate-500 mb-4">Click a word on the left, then click its matching meaning on the right.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                        <ul id="words" class="space-y-2">
+                            <li class="match-item" data-match="1">Here</li>
+                            <li class="match-item" data-match="2">There</li>
+                            <li class="match-item" data-match="3">Outside</li>
+                            <li class="match-item" data-match="4">Nowhere</li>
+                            <li class="match-item" data-match="5">Inside</li>
+                        </ul>
+                        <ul id="meanings" class="space-y-2">
+                            <li class="match-item" data-match="2">In that place (far)</li>
+                            <li class="match-item" data-match="4">Not in any place</li>
+                            <li class="match-item" data-match="3">Not inside a building or room</li>
+                            <li class="match-item" data-match="1">In or at a specific point near you</li>
+                            <li class="match-item" data-match="5">Within a building or room</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Part 2: Fill in the Blanks -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-1">Part 2: Fill in the Blanks</h3>
+                    <p class="text-sm text-slate-500 mb-4">Choose the correct word to complete each sentence.</p>
+                    <div class="space-y-4">
+                        <div class="fill-blank-question" data-answer="Sit">1. Please, <select class="form-input form-select inline-block w-32"><option value="">Select</option><option>Go</option><option>Look</option><option>Stand</option><option>Sit</option></select> down in your chair.</div>
+                        <div class="fill-blank-question" data-answer="Go">2. <select class="form-input form-select inline-block w-32"><option value="">Select</option><option>Go</option><option>Look</option><option>Don't</option><option>Sit</option></select> to the front of the classroom.</div>
+                        <div class="fill-blank-question" data-answer="Don't">3. <select class="form-input form-select inline-block w-32"><option value="">Select</option><option>Look</option><option>Don't</option><option>Stand</option><option>Sit</option></select> touch the hot stove!</div>
+                        <div class="fill-blank-question" data-answer="Look">4. <select class="form-input form-select inline-block w-32"><option value="">Select</option><option>Go</option><option>Look</option><option>Stand</option><option>Everywhere</option></select> here! I have something to show you.</div>
+                        <div class="fill-blank-question" data-answer="Everywhere">5. I can't find my keys. I have looked <select class="form-input form-select inline-block w-32"><option value="">Select</option><option>Go</option><option>Nowhere</option><option>Stand</option><option>Everywhere</option></select>.</div>
+                        <div class="fill-blank-question" data-answer="Stand">6. <select class="form-input form-select inline-block w-32"><option value="">Select</option><option>Go</option><option>Look</option><option>Stand</option><option>Sit</option></select> up when the teacher enters the room.</div>
+                    </div>
+                </div>
+                
+                <!-- Part 3: Make it Negative -->
+                <div>
+                     <h3 class="font-semibold text-lg mb-1">Part 3: Make it Negative</h3>
+                     <p class="text-sm text-slate-500 mb-4">Change the positive command into a negative command.</p>
+                     <div class="space-y-4">
+                        <div class="make-negative-question" data-answer1="Don't say the answer." data-answer2="Do not say the answer."><p class="mb-1">1. Say the answer.</p><input type="text" class="form-input"></div>
+                        <div class="make-negative-question" data-answer1="Don't come to the party." data-answer2="Do not come to the party."><p class="mb-1">2. Come to the party.</p><input type="text" class="form-input"></div>
+                        <div class="make-negative-question" data-answer1="Don't sit on the table." data-answer2="Do not sit on the table."><p class="mb-1">3. Sit on the table.</p><input type="text" class="form-input"></div>
+                        <div class="make-negative-question" data-answer1="Don't stop talking." data-answer2="Do not stop talking."><p class="mb-1">4. Stop talking.</p><input type="text" class="form-input"></div>
+                     </div>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button type="button" id="submit-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors text-lg">Check Answers</button>
+                </div>
+            </form>
+        </section>
+        
+        <!-- Results Section -->
+        <section id="results-section" class="quiz-card text-center hidden">
+            <h2 id="results-title" class="text-3xl font-bold text-slate-800"></h2>
+            <p id="results-message" class="text-slate-600 mt-2 text-lg"></p>
+            <button id="retry-btn" class="mt-6 bg-slate-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-700 transition-colors">Try Again</button>
+        </section>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const quizData = {
+        totalQuestions: 15 // 5 matching + 6 fill-in-the-blank + 4 make-negative
+    };
+
+    const wordsContainer = document.getElementById('words');
+    const meaningsContainer = document.getElementById('meanings');
+    const submitBtn = document.getElementById('submit-btn');
+    const retryBtn = document.getElementById('retry-btn');
+    const resultsSection = document.getElementById('results-section');
+    const quizForm = document.getElementById('quiz-form');
+
+    let selectedWord = null;
+    let matchedPairs = 0;
+
+    // Part 1: Matching Logic
+    function handleWordClick(e) {
+        if (e.target.tagName !== 'LI' || e.target.classList.contains('correct')) return;
+        
+        if (selectedWord) {
+            selectedWord.classList.remove('selected');
+        }
+        selectedWord = e.target;
+        selectedWord.classList.add('selected');
+    }
+
+    function handleMeaningClick(e) {
+        if (e.target.tagName !== 'LI' || !selectedWord || e.target.classList.contains('correct')) return;
+
+        const meaning = e.target;
+        if (selectedWord.dataset.match === meaning.dataset.match) {
+            selectedWord.classList.add('correct');
+            meaning.classList.add('correct');
+            selectedWord.classList.remove('selected');
+            selectedWord = null;
+            matchedPairs++;
+        } else {
+            meaning.classList.add('incorrect-flash');
+            setTimeout(() => {
+                meaning.classList.remove('incorrect-flash');
+            }, 500);
+        }
+    }
+
+    wordsContainer.addEventListener('click', handleWordClick);
+    meaningsContainer.addEventListener('click', handleMeaningClick);
+
+    // Check Answers Logic
+    submitBtn.addEventListener('click', () => {
+        let score = 0;
+        
+        // Part 1 Score
+        score += matchedPairs;
+
+        // Part 2 Score
+        const fillBlankQuestions = quizForm.querySelectorAll('.fill-blank-question');
+        fillBlankQuestions.forEach(q => {
+            const select = q.querySelector('select');
+            select.classList.remove('correct-answer', 'incorrect-answer');
+            if (select.value === q.dataset.answer) {
+                score++;
+                select.classList.add('correct-answer');
+            } else {
+                select.classList.add('incorrect-answer');
+            }
+        });
+
+        // Part 3 Score
+        const makeNegativeQuestions = quizForm.querySelectorAll('.make-negative-question');
+        makeNegativeQuestions.forEach(q => {
+            const input = q.querySelector('input');
+            const userAnswer = input.value.trim().replace(/\s+/g, ' '); // Standardize input
+            const answer1 = q.dataset.answer1;
+            const answer2 = q.dataset.answer2;
+            input.classList.remove('correct-answer', 'incorrect-answer');
+
+            if (userAnswer.toLowerCase() === answer1.toLowerCase() || userAnswer.toLowerCase() === answer2.toLowerCase()) {
+                score++;
+                input.classList.add('correct-answer');
+            } else {
+                input.classList.add('incorrect-answer');
+            }
+        });
+
+        // Display results
+        const resultsTitle = document.getElementById('results-title');
+        const resultsMessage = document.getElementById('results-message');
+        resultsTitle.textContent = `You scored ${score} out of ${quizData.totalQuestions}!`;
+
+        if (score === quizData.totalQuestions) {
+            resultsMessage.textContent = "Excellent work! You've mastered this lesson.";
+        } else if (score >= quizData.totalQuestions * 0.7) {
+            resultsMessage.textContent = "Great job! You have a good understanding of the material.";
+        } else {
+            resultsMessage.textContent = "Good effort. Review the 'Learn' section and try again!";
+        }
+
+        resultsSection.classList.remove('hidden');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    });
+
+    // Retry Logic
+    retryBtn.addEventListener('click', () => {
+        // Reset matching
+        selectedWord = null;
+        matchedPairs = 0;
+        wordsContainer.querySelectorAll('li').forEach(li => li.classList.remove('selected', 'correct'));
+        meaningsContainer.querySelectorAll('li').forEach(li => li.classList.remove('correct'));
+
+        // Reset forms
+        quizForm.reset();
+        quizForm.querySelectorAll('.form-input, .form-select').forEach(el => {
+            el.classList.remove('correct-answer', 'incorrect-answer');
+        });
+
+        // Hide results
+        resultsSection.classList.add('hidden');
+        
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+</script>
+
+</body>
+</html>

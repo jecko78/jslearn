@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10: Interactive Quiz & Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A two-part SPA. Part 1 is a 'Learn' section with interactive cards to review vocabulary for rooms and furniture, and a clear grammar rule section for 'have/has'. This provides context before the test. Part 2 is the 'Practice' section, an interactive quiz with three distinct activities: a click-to-match for rooms, a fill-in-the-blank dropdown for furniture, and radio buttons for have/has. This transforms the static sheet into a varied and engaging user experience. A final 'Results' screen provides instant feedback and a retry option, creating a complete learning cycle. -->
+    <!-- Visualization & Content Choices: Report Info: Rooms/Furniture -> Goal: Test Vocabulary -> Method: Click-to-match lists and dropdown select questions -> Interaction: User clicks to match items or selects from a dropdown, receiving immediate visual feedback on the results screen -> Justification: More interactive and reinforces learning better than a static sheet. Report Info: Have/Has grammar -> Goal: Test Grammar Application -> Method: Radio button choices -> Interaction: User selects the correct verb form -> Justification: A clear, standard, and effective way to test binary grammar choices. NO SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .quiz-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .learn-card {
+            background-color: #f1f5f9; /* slate-100 */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .learn-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+        .match-item {
+            cursor: pointer;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0; /* slate-200 */
+            border-radius: 0.5rem;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .match-item:hover {
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .match-item.selected {
+            border-color: #3b82f6; /* blue-500 */
+            background-color: #dbeafe; /* blue-100 */
+            font-weight: 600;
+        }
+        .match-item.correct {
+            border-color: #22c55e; /* green-500 */
+            background-color: #dcfce7; /* green-100 */
+            cursor: default;
+        }
+        .match-item.incorrect-flash {
+            border-color: #ef4444; /* red-500 */
+            background-color: #fee2e2; /* red-100 */
+        }
+        .form-select {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #cbd5e1; /* slate-300 */
+            border-radius: 0.375rem;
+            background-color: white;
+        }
+        .correct-answer {
+            border-color: #22c55e !important;
+        }
+        .incorrect-answer {
+            border-color: #ef4444 !important;
+        }
+        .radio-label.correct {
+            color: #166534; /* green-800 */
+        }
+         .radio-label.incorrect {
+            color: #991b1b; /* red-800 */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-slate-800">Lesson 10: My House</h1>
+            <p class="text-slate-600 mt-2 text-lg">Learn about rooms, furniture, and using "have/has".</p>
+        </header>
+
+        <!-- Learn Section -->
+        <section id="learn-section" class="quiz-card">
+            <h2 class="text-2xl font-bold text-slate-700 mb-6 text-center">Learn the Concepts</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-semibold text-lg text-slate-600 mb-4 text-center">🏡 Rooms & Furniture</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <div class="learn-card"><span class="icon">🍳</span><p class="font-semibold mt-2">Kitchen</p></div>
+                        <div class="learn-card"><span class="icon">🛏️</span><p class="font-semibold mt-2">Bedroom</p></div>
+                        <div class="learn-card"><span class="icon">🛋️</span><p class="font-semibold mt-2">Living Room</p></div>
+                        <div class="learn-card"><span class="icon">🛁</span><p class="font-semibold mt-2">Bathroom</p></div>
+                        <div class="learn-card"><span class="icon">🚗</span><p class="font-semibold mt-2">Garage</p></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg text-slate-600 mb-4 text-center">✅ Using 'Have' and 'Has'</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-blue-100 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-800">Use HAVE with...</h4>
+                             <ul class="mt-2 text-blue-700 space-y-1">
+                                <li>I / You / We / They</li>
+                                <li class="font-semibold">Example: "We have a nice kitchen."</li>
+                            </ul>
+                        </div>
+                        <div class="bg-purple-100 p-4 rounded-lg">
+                            <h4 class="font-bold text-purple-800">Use HAS with...</h4>
+                             <ul class="mt-2 text-purple-700 space-y-1">
+                                <li>He / She / It</li>
+                                <li class="font-semibold">Example: "She has a big car."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice (Quiz) Section -->
+        <section id="practice-section" class="quiz-card">
+            <h2 class="text-2xl font-bold text-slate-700 mb-6 text-center">Practice Your Knowledge</h2>
+            <form id="quiz-form" class="space-y-8">
+
+                <!-- Part 1: Matching -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-1">Part 1: Match the Room</h3>
+                    <p class="text-sm text-slate-500 mb-4">Click a room on the left, then click its matching description on the right.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                        <ul id="rooms" class="space-y-2">
+                            <li class="match-item" data-match="1">Kitchen</li>
+                            <li class="match-item" data-match="2">Bedroom</li>
+                            <li class="match-item" data-match="3">Bathroom</li>
+                            <li class="match-item" data-match="4">Garage</li>
+                            <li class="match-item" data-match="5">Living Room</li>
+                        </ul>
+                        <ul id="descriptions" class="space-y-2">
+                            <li class="match-item" data-match="2">You sleep in this room.</li>
+                            <li class="match-item" data-match="5">You watch TV and relax here.</li>
+                            <li class="match-item" data-match="1">You cook food in this room.</li>
+                            <li class="match-item" data-match="4">You park your car here.</li>
+                            <li class="match-item" data-match="3">You wash your hands and take a shower.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Part 2: Fill-in-the-blanks -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-1">Part 2: Furniture Fill-in-the-Blanks</h3>
+                    <p class="text-sm text-slate-500 mb-4">Choose the correct word from the dropdown to complete each sentence.</p>
+                    <div class="space-y-4">
+                        <div class="furniture-question" data-answer="bed">
+                            <label class="block mb-1">1. I sleep in a big, comfortable ______ at night.</label>
+                            <select class="form-select">
+                                <option value="">Select a word</option>
+                                <option value="couch">couch</option>
+                                <option value="bed">bed</option>
+                                <option value="table">table</option>
+                            </select>
+                        </div>
+                        <div class="furniture-question" data-answer="refrigerator">
+                            <label class="block mb-1">2. We keep the milk and eggs in the ______ to keep them cold.</label>
+                             <select class="form-select">
+                                <option value="">Select a word</option>
+                                <option value="refrigerator">refrigerator</option>
+                                <option value="closet">closet</option>
+                                <option value="couch">couch</option>
+                            </select>
+                        </div>
+                         <div class="furniture-question" data-answer="couch">
+                            <label class="block mb-1">3. My family sits on the ______ to watch movies together.</label>
+                             <select class="form-select">
+                                <option value="">Select a word</option>
+                                <option value="bed">bed</option>
+                                <option value="table">table</option>
+                                <option value="couch">couch</option>
+                            </select>
+                        </div>
+                         <div class="furniture-question" data-answer="closet">
+                            <label class="block mb-1">4. I hang my clothes in the ______.</label>
+                             <select class="form-select">
+                                <option value="">Select a word</option>
+                                <option value="refrigerator">refrigerator</option>
+                                <option value="closet">closet</option>
+                                <option value="bed">bed</option>
+                            </select>
+                        </div>
+                         <div class="furniture-question" data-answer="table">
+                            <label class="block mb-1">5. We eat dinner at the ______ in the dining room.</label>
+                             <select class="form-select">
+                                <option value="">Select a word</option>
+                                <option value="couch">couch</option>
+                                <option value="table">table</option>
+                                <option value="closet">closet</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 3: Have or Has? -->
+                <div>
+                     <h3 class="font-semibold text-lg mb-1">Part 3: Choose 'have' or 'has'</h3>
+                     <p class="text-sm text-slate-500 mb-4">Select the correct word for each sentence.</p>
+                     <div class="space-y-4">
+                        <div class="have-has-question" data-answer="have">
+                            <p>1. I ______ a small house.</p>
+                            <div class="flex space-x-4 mt-1">
+                                <label class="radio-label"><input type="radio" name="q1" value="have"> have</label>
+                                <label class="radio-label"><input type="radio" name="q1" value="has"> has</label>
+                            </div>
+                        </div>
+                        <div class="have-has-question" data-answer="has">
+                            <p>2. She ______ a big kitchen.</p>
+                             <div class="flex space-x-4 mt-1">
+                                <label class="radio-label"><input type="radio" name="q2" value="have"> have</label>
+                                <label class="radio-label"><input type="radio" name="q2" value="has"> has</label>
+                            </div>
+                        </div>
+                        <div class="have-has-question" data-answer="have">
+                            <p>3. They ______ two bedrooms in their house.</p>
+                            <div class="flex space-x-4 mt-1">
+                                <label class="radio-label"><input type="radio" name="q3" value="have"> have</label>
+                                <label class="radio-label"><input type="radio" name="q3" value="has"> has</label>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button type="button" id="submit-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors text-lg">Check Answers</button>
+                </div>
+            </form>
+        </section>
+        
+        <!-- Results Section -->
+        <section id="results-section" class="quiz-card text-center hidden">
+            <h2 id="results-title" class="text-3xl font-bold text-slate-800"></h2>
+            <p id="results-message" class="text-slate-600 mt-2 text-lg"></p>
+            <button id="retry-btn" class="mt-6 bg-slate-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-700 transition-colors">Try Again</button>
+        </section>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const quizData = {
+        totalQuestions: 13 // 5 matching + 5 furniture + 3 have/has
+    };
+
+    const roomsContainer = document.getElementById('rooms');
+    const descriptionsContainer = document.getElementById('descriptions');
+    const submitBtn = document.getElementById('submit-btn');
+    const retryBtn = document.getElementById('retry-btn');
+    const resultsSection = document.getElementById('results-section');
+    const quizForm = document.getElementById('quiz-form');
+
+    let selectedRoom = null;
+    let matchedPairs = 0;
+
+    function handleRoomClick(e) {
+        if (e.target.tagName !== 'LI' || e.target.classList.contains('correct')) return;
+        
+        if (selectedRoom) {
+            selectedRoom.classList.remove('selected');
+        }
+        selectedRoom = e.target;
+        selectedRoom.classList.add('selected');
+    }
+
+    function handleDescriptionClick(e) {
+        if (e.target.tagName !== 'LI' || !selectedRoom || e.target.classList.contains('correct')) return;
+
+        const description = e.target;
+        if (selectedRoom.dataset.match === description.dataset.match) {
+            selectedRoom.classList.add('correct');
+            description.classList.add('correct');
+            selectedRoom.classList.remove('selected');
+            selectedRoom = null;
+            matchedPairs++;
+        } else {
+            description.classList.add('incorrect-flash');
+            setTimeout(() => {
+                description.classList.remove('incorrect-flash');
+            }, 500);
+        }
+    }
+
+    roomsContainer.addEventListener('click', handleRoomClick);
+    descriptionsContainer.addEventListener('click', handleDescriptionClick);
+
+    submitBtn.addEventListener('click', () => {
+        let score = 0;
+        
+        score += matchedPairs;
+
+        const furnitureQuestions = quizForm.querySelectorAll('.furniture-question');
+        furnitureQuestions.forEach(q => {
+            const select = q.querySelector('select');
+            select.classList.remove('correct-answer', 'incorrect-answer');
+            if (select.value === q.dataset.answer) {
+                score++;
+                select.classList.add('correct-answer');
+            } else {
+                select.classList.add('incorrect-answer');
+            }
+        });
+        
+        const haveHasQuestions = quizForm.querySelectorAll('.have-has-question');
+        haveHasQuestions.forEach(q => {
+            const correctAnswer = q.dataset.answer;
+            const selectedRadio = q.querySelector('input[type="radio"]:checked');
+            q.querySelectorAll('.radio-label').forEach(label => label.classList.remove('correct', 'incorrect'));
+            
+            if (selectedRadio) {
+                const parentLabel = selectedRadio.parentElement;
+                if (selectedRadio.value === correctAnswer) {
+                    score++;
+                    parentLabel.classList.add('correct');
+                } else {
+                    parentLabel.classList.add('incorrect');
+                    q.querySelector(`input[value="${correctAnswer}"]`).parentElement.classList.add('correct');
+                }
+            } else {
+                q.querySelector(`input[value="${correctAnswer}"]`).parentElement.classList.add('correct');
+            }
+        });
+
+        const resultsTitle = document.getElementById('results-title');
+        const resultsMessage = document.getElementById('results-message');
+        resultsTitle.textContent = `You scored ${score} out of ${quizData.totalQuestions}!`;
+
+        if (score === quizData.totalQuestions) {
+            resultsMessage.textContent = "Excellent work! You've mastered this topic.";
+        } else if (score >= quizData.totalQuestions * 0.7) {
+            resultsMessage.textContent = "Great job! You know this material well.";
+        } else {
+            resultsMessage.textContent = "Good effort! Review the 'Learn' section and try again.";
+        }
+
+        resultsSection.classList.remove('hidden');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    });
+
+    retryBtn.addEventListener('click', () => {
+        selectedRoom = null;
+        matchedPairs = 0;
+        roomsContainer.querySelectorAll('li').forEach(li => li.classList.remove('selected', 'correct'));
+        descriptionsContainer.querySelectorAll('li').forEach(li => li.classList.remove('correct'));
+
+        quizForm.reset();
+        quizForm.querySelectorAll('.form-select').forEach(el => el.classList.remove('correct-answer', 'incorrect-answer'));
+        quizForm.querySelectorAll('.radio-label').forEach(el => el.classList.remove('correct', 'incorrect'));
+
+        resultsSection.classList.add('hidden');
+        
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+</script>
+
+</body>
+</html>
