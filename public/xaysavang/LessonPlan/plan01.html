@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: แผนการสอนภาษาอังกฤษ ป.3 - Lesson 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: The SPA is structured as a visual guide for a teacher, following the logical flow of a lesson plan. It starts with a clear header, followed by a 'Preparation' section combining objectives and materials for easy pre-class setup. The core is the 'Lesson Flow', a five-step visual timeline using cards to detail each stage from Warm-up to Wrap-up, including timings and activities. This structure is more intuitive for a teacher than a linear document because it visually separates and prioritizes the phases of classroom execution. A final 'Evaluation' section provides a quick checklist for assessment. This top-down, chronologically-ordered design ensures maximum usability for the target user (a teacher). -->
+    <!-- Visualization & Content Choices: Lesson Objectives -> Goal: Inform -> Method: Icon-based list (Unicode) -> Justification: Icons make objectives quickly scannable and memorable. Lesson Materials -> Goal: Organize -> Method: Icon-based list -> Justification: Visually separates items for an easy checklist. 5-Step Activities -> Goal: Organize/Change -> Method: A structured timeline using HTML/CSS cards in a grid layout -> Justification: This visually represents the flow and time division of the lesson, making it easy to follow. Evaluation Criteria -> Goal: Inform -> Method: A simple checklist with icons -> Justification: Summarizes assessment points concisely. All visualizations are created with structured HTML and Tailwind CSS, confirming NO SVG/Mermaid was used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f0f9ff; /* sky-50 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+        .icon-list li span {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+            width: 30px;
+            text-align: center;
+        }
+        .timeline-dot {
+            background-color: #118AB2;
+            min-width: 50px;
+            min-height: 50px;
+            border: 4px solid #f0f9ff;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold" style="color: #073B4C;">แผนการสอนภาษาอังกฤษ ป.3</h1>
+            <p class="text-2xl md:text-3xl mt-2" style="color: #118AB2;">Lesson 1: Greetings & Introductions</p>
+            <div class="inline-block bg-white border-2 border-dashed border-amber-400 rounded-full px-6 py-2 mt-4">
+                <p class="text-lg font-semibold" style="color: #073B4C;">⏱️ ระยะเวลา: 1 ชั่วโมง</p>
+            </div>
+        </header>
+
+        <!-- Section 1: Preparation -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-6" style="color: #073B4C;">ส่วนที่ 1: การเตรียมตัว (Get Ready)</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Objectives -->
+                <div class="card p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #118AB2;">🎯 จุดประสงค์การเรียนรู้</h3>
+                    <ul class="icon-list">
+                        <li><span>👋</span>ทักทายและกล่าวลาได้อย่างถูกต้อง</li>
+                        <li><span>❓</span>ถาม-ตอบเกี่ยวกับชื่อและทุกข์สุขได้</li>
+                        <li><span>🔤</span>ร้องเพลง ABC และสะกดชื่อตัวเองได้</li>
+                    </ul>
+                </div>
+                <!-- Materials -->
+                <div class="card p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #118AB2;">🛠️ สื่อการเรียนการสอน</h3>
+                    <ul class="icon-list">
+                        <li><span>🃏</span>บัตรคำศัพท์ (Flashcards)</li>
+                        <li><span>📈</span>แผนภูมิเพลง ABC</li>
+                        <li><span>⚽</span>ลูกบอลนิ่ม 1 ลูก</li>
+                        <li><span>🎵</span>เครื่องเล่นเพลง</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 2: Lesson Flow -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #073B4C;">ส่วนที่ 2: ลำดับกิจกรรมการสอน (Lesson Flow)</h2>
+            
+            <div class="space-y-8">
+                <!-- Step 1: Warm-up -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">5<span class="text-sm">นาที</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #FF6B6B;">ขั้นที่ 1: นำเข้าสู่บทเรียน (Warm-up) 🎶</h3>
+                        <p class="mt-2 text-lg">ครูทักทายนักเรียน ("Hello everyone!") และเปิดเพลง "Hello Song" ให้นักเรียนร้องและทำท่าทางตามเพื่อสร้างบรรยากาศที่สนุกสนาน</p>
+                    </div>
+                </div>
+
+                <!-- Step 2: Presentation -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">15<span class="text-sm">นาที</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #FFD166;">ขั้นที่ 2: นำเสนอเนื้อหา (Presentation) 🗣️</h3>
+                        <p class="mt-2 text-lg">สอนคำศัพท์ทักทาย (Hello, Good morning) และประโยคถาม-ตอบ (How are you? / I'm fine., What is your name? / My name is...) โดยใช้บัตรคำและท่าทางประกอบ</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Practice -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">20<span class="text-sm">นาที</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #06D6A0;">ขั้นที่ 3: ฝึกฝน (Practice) 🤝</h3>
+                        <ul class="mt-2 text-lg list-disc list-inside space-y-2">
+                            <li>**จับคู่ทักทาย:** ให้นักเรียนฝึกสนทนากับเพื่อน</li>
+                            <li>**เกมโยนบอลถามชื่อ:** ส่งบอลต่อกันในวงกลมพร้อมถาม-ตอบชื่อ</li>
+                            <li>**เพลง ABC และสะกดชื่อ:** ร้องเพลงและฝึกสะกดชื่อตัวเอง</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Production -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">15<span class="text-sm">นาที</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #118AB2;">ขั้นที่ 4: การนำไปใช้ (Production) 🎭</h3>
+                        <ul class="mt-2 text-lg list-disc list-inside space-y-2">
+                           <li>**บทบาทสมมติ (Role Play):** นักเรียนออกมาแสดงบทสนทนาหน้าชั้นเรียน</li>
+                           <li>**Find a New Friend:** เดินหาเพื่อนใหม่และแนะนำตัวเอง</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 5: Wrap-up -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">5<span class="text-sm">นาที</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #073B4C;">ขั้นที่ 5: สรุป (Wrap-up) 👋</h3>
+                        <p class="mt-2 text-lg">ครูทบทวนคำศัพท์และประโยคทั้งหมด จากนั้นสอนการกล่าวลา (Goodbye, See you later) และกล่าวลาพร้อมกัน</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Evaluation -->
+        <section>
+             <h2 class="text-3xl font-bold text-center mb-6" style="color: #073B4C;">ส่วนที่ 3: การวัดผลและประเมินผล (Evaluation)</h2>
+             <div class="card p-6 max-w-2xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #118AB2;">✔️ Check for Understanding</h3>
+                <ul class="icon-list">
+                    <li><span>🙋</span>สังเกตการณ์มีส่วนร่วมในกิจกรรม</li>
+                    <li><span>🎤</span>ประเมินความถูกต้องในการออกเสียง</li>
+                    <li><span>💬</span>ประเมินความสามารถในการสื่อสารสั้นๆ</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

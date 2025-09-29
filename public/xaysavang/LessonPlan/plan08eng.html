@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: English Lesson Plan Grade 3 - Lesson 8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: The SPA is structured as a visual, chronological guide for a teacher, following the successful format of previous lesson plans. It is divided into three logical parts: 'Preparation' (combining Objectives & Materials for easy pre-class setup), 'Lesson Flow' (a 5-step visual timeline showing the class progression), and 'Evaluation' (a final checklist). This structure prioritizes usability for a teacher by mirroring the actual process of preparing and executing a lesson, making it more intuitive than a standard document. -->
+    <!-- Visualization & Content Choices: Lesson Objectives -> Goal: Inform -> Method: Icon-based list (Unicode) -> Justification: Icons make objectives quickly scannable. 5-Step Activities -> Goal: Organize/Change -> Method: Structured timeline with HTML/CSS cards -> Justification: Visually represents the chronological flow and time allocation of the lesson. Evaluation -> Goal: Inform -> Method: Icon-based checklist -> Justification: Summarizes assessment points concisely. No quantitative data was present, so no charts were needed. All visuals are created with structured HTML and Tailwind CSS, confirming NO SVG/Mermaid was used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* sky-50 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+        .icon-list li span {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+            width: 30px;
+            text-align: center;
+        }
+        .timeline-dot {
+            background-color: #118AB2;
+            min-width: 50px;
+            min-height: 50px;
+            border: 4px solid #f0f9ff;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold" style="color: #073B4C;">English Lesson Plan P.3</h1>
+            <p class="text-2xl md:text-3xl mt-2" style="color: #118AB2;">Lesson 8: Location & Commands</p>
+            <div class="inline-block bg-white border-2 border-dashed border-amber-400 rounded-full px-6 py-2 mt-4">
+                <p class="text-lg font-semibold" style="color: #073B4C;">⏱️ Duration: 1 Hour</p>
+            </div>
+        </header>
+
+        <!-- Section 1: Preparation -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-6" style="color: #073B4C;">Part 1: Preparation</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Objectives -->
+                <div class="card p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #118AB2;">🎯 Learning Objectives</h3>
+                    <ul class="icon-list">
+                        <li><span>📍</span>Use location words (here, there).</li>
+                        <li><span>🏃</span>Follow and give simple commands.</li>
+                        <li><span>🚫</span>Use negative commands (Don't...).</li>
+                    </ul>
+                </div>
+                <!-- Materials -->
+                <div class="card p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #118AB2;">🛠️ Teaching Materials</h3>
+                    <ul class="icon-list">
+                        <li><span>🃏</span>Flashcards (Commands: Go, Stop, Look)</li>
+                        <li><span>🤫</span>An object to hide (e.g., a special eraser)</li>
+                        <li><span>🧑‍🎨</span>Whiteboard and markers</li>
+                        <li><span>📝</span>Worksheet</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 2: Lesson Flow -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #073B4C;">Part 2: Lesson Flow</h2>
+            
+            <div class="space-y-8">
+                <!-- Step 1: Warm-up -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">5<span class="text-sm">Mins</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #FF6B6B;">Step 1: Warm-up 🏃‍♀️</h3>
+                        <p class="mt-2 text-lg">Play a quick game of "Teacher Says" using commands from the previous lesson (Stand up, Sit down, Touch your desk).</p>
+                    </div>
+                </div>
+
+                <!-- Step 2: Presentation -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">15<span class="text-sm">Mins</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #FFD166;">Step 2: Presentation 🧑‍🏫</h3>
+                        <p class="mt-2 text-lg">Introduce new commands (Go, Stop, Come, Look, Touch) by acting them out. Demonstrate location words by saying "Come here" and "Go there." Introduce negative commands: "Go to the door. Don't stop."</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Practice -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">20<span class="text-sm">Mins</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #06D6A0;">Step 3: Practice ✍️</h3>
+                        <ul class="mt-2 text-lg list-disc list-inside space-y-2">
+                            <li>**"Teacher Says" with New Commands:** Play the game again using the new vocabulary like "Go," "Stop," and "Look."</li>
+                            <li>**Obstacle Course:** Set up a simple course. "Go to the desk. Look under the chair. Stop."</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Production -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">15<span class="text-sm">Mins</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #118AB2;">Step 4: Production 🎨</h3>
+                        <ul class="mt-2 text-lg list-disc list-inside space-y-2">
+                           <li>**Treasure Hunt:** Hide an object. Give a student commands to find it. "Go to the front. Look on the table. Don't look in the bag."</li>
+                           <li>**Drawing Directions:** Students draw a simple map of the classroom and draw a path from their desk to the door.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 5: Wrap-up -->
+                <div class="md:flex items-center">
+                    <div class="timeline-dot rounded-full flex-shrink-0 flex items-center justify-center text-white text-xl font-bold mx-auto md:mx-0">5<span class="text-sm">Mins</span></div>
+                    <div class="card p-6 w-full md:ml-6 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-semibold" style="color: #073B4C;">Step 5: Wrap-up 👋</h3>
+                        <p class="mt-2 text-lg">Give a series of quick commands to the whole class: "Everybody, look at the board. Don't look at me. Stop! Good job!" Praise their excellent listening.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Evaluation -->
+        <section>
+             <h2 class="text-3xl font-bold text-center mb-6" style="color: #073B4C;">Part 3: Evaluation</h2>
+             <div class="card p-6 max-w-2xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-4 text-center" style="color: #118AB2;">✔️ Check for Understanding</h3>
+                <ul class="icon-list">
+                    <li><span>🙋</span>Observe if students follow multi-step commands.</li>
+                    <li><span>🎤</span>Listen for understanding of "here" vs "there".</li>
+                    <li><span>📝</span>Check worksheet for drawing accuracy.</li>
+                    <li><span>💬</span>Assess if students can respond to negative commands.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
