@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image Vocabulary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom transition for page visibility */
+        .page {
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+        .page.hidden {
+            opacity: 0;
+            transform: scale(0.98);
+            pointer-events: none;
+            position: absolute; /* Take out of flow when hidden */
+        }
+        .page:not(.hidden) {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+        <div class="w-full max-w-5xl mx-auto">
+            <!-- Header -->
+            <header class="text-center mb-8">
+                <h1 class="font-poppins text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900">English Vocabulary</h1>
+                <p class="mt-2 text-lg text-slate-600">Your interactive guide to starting English.</p>
+            </header>
+
+
+            <!-- Page 1:  -->
+                <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte5-1.fna.fbcdn.net/v/t39.30808-6/553725562_845363871148690_3264829090990290714_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeH6MugS9UMDtXGWXqnwlgyRrd6rhflLrrGt3quF-UuusUajQqEriWZ7ECf6TAjAdkUP-wLt7zRM5HkWpMz22Aup&_nc_ohc=kppgbedakaQQ7kNvwFX9YGK&_nc_oc=AdlLQLcwDWHJzAjiC3yNRQXfQXfnO1etXC8FeU1E-HFuvE8adQYEAAamBvZpmcpcJFY&_nc_zt=23&_nc_ht=scontent.fvte5-1.fna&_nc_gid=o-Y5MFTXCfDcmbZavN0GqA&oh=00_Afb7yNZOfRl0Bp2ED_czXCISt160t564GBEOr8_-jRmJuA&oe=68E1030F" alt=""> 
+                        </div>
+                    </div>
+                </div>
+            <!-- Page 2:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte1-2.fna.fbcdn.net/v/t39.30808-6/555583735_848711794147231_3651083730256722419_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGu2k_QHeD8T2JV62zBYP1Str1hfEvFynK2vWF8S8XKctni5R9zLb5g9nw2f1iUD_GiAEwiVEkSYFKt1HlHIuSi&_nc_ohc=aC0QHFxv6FcQ7kNvwGlOZf1&_nc_oc=AdmqTRp7BsN98mwvo076hHwyt31GHrxiTjuoWnK5DvfID34_vBsXPSF700FKuTRXL8U&_nc_zt=23&_nc_ht=scontent.fvte1-2.fna&_nc_gid=UveiixoE1jt9NSg5k11NaQ&oh=00_Afa8KdDWzBr_1FZYPILubmc0-H2F9x3w6L7bkOgiqQI9CA&oe=68E12781" alt="">
+                        </div>
+                    </div>
+            </div>
+            <!-- Page 3:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte5-1.fna.fbcdn.net/v/t39.30808-6/557459865_849368767414867_1098461612319250775_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFVEj3d1MV4ZNedA7rizzN3rHznb-_mGIKsfOdv7-YYglcViMS-UHOjsnAMt_lG25EcqDXzncoyn4RYu0DRUdh1&_nc_ohc=yYcMA-MBBwkQ7kNvwGHO4K2&_nc_oc=AdlEOFbO9Nq9b4ezuoL92WpdK6DxYlvdUlD8iD_tA-rDeihxos2UslUWbqW1tPVTCe8&_nc_zt=23&_nc_ht=scontent.fvte5-1.fna&_nc_gid=9Kl8H01pM-RARmkqtc8x8w&oh=00_AfacEawQBLuYZv1Qi95iqum6TBQdAsF1dKyJnLoikak8SA&oe=68E113D2" alt="">
+                        </div>
+                    </div>
+            </div>
+            <!-- Page 3:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="2xl:w-full h-auto md:w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte5-1.fna.fbcdn.net/v/t39.30808-6/555806749_849660280719049_2663498610322989679_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeH77t0y0ZElO-WHmL3M2ZvKAt-cuWR6oWsC35y5ZHqha06h3F-JtLkmdvrCO5-iUclk-c849U32Dv_xZhMYpJD6&_nc_ohc=OxwN8miRKm0Q7kNvwGGN-mT&_nc_oc=AdnjLmX5QnDj_9txLDmUK0EnPL-MCgTDxfjVo57JvbgA8CBV-VPLDobfs974HtXJcHE&_nc_zt=23&_nc_ht=scontent.fvte5-1.fna&_nc_gid=MvGR8uUFDDPBv6wAr-mySw&oh=00_AfYPNFfWBeST_6-WY2iwKULZl1LilSJfe2BO7nDblm9Tiw&oe=68E1086D" alt="">
+                        </div>
+                    </div>
+            </div>
+            <!-- Page 3:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="2xl:w-full h-auto md:w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte3-1.fna.fbcdn.net/v/t39.30808-6/556546942_849691637382580_2972749531308383891_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGix3sA9lM_j61KuWhB0sNdLy_rkGCErTUvL-uQYIStNZrJhPy3SSWJyZDULJ8J_lBWd0ry5XZ9dZ-ctGQaV9ul&_nc_ohc=KnUpVCVfhCMQ7kNvwGYD6lo&_nc_oc=Adln-0E7_GItKqvQefPRYL4CdoqYVAKEeWHUHKUj10HmNC9sNVXoUHUrcRU70OmJBGE&_nc_zt=23&_nc_ht=scontent.fvte3-1.fna&_nc_gid=nAzOcvz9aiafVqktChqJlQ&oh=00_AfbYnzUP07BAqkPz74qseVUU_Z-RO_ZSit5Q580_7eiMyQ&oe=68E1252D" alt="">
+                        </div>
+                    </div>
+            </div>
+            <!-- Page 3:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="2xl:w-full h-auto md:w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte5-1.fna.fbcdn.net/v/t39.30808-6/470794396_3839762779624211_2043044495690347430_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF0XZbAztMI7MH2wOTE7f_QzRvlks9E50LNG-WSz0TnQrJPKqkHw0mNh9Vu7zcv3nOpHPbmhVKFOyrGbhatF2lW&_nc_ohc=qNYbYz3FEr8Q7kNvwEAdOw0&_nc_oc=AdnxHnkb5F4HocVEPsPXMHxeQiyHSIYaB7WBL_CzhMzj0OwvFi5G7UdfEehb-1UItYw&_nc_zt=23&_nc_ht=scontent.fvte5-1.fna&_nc_gid=7gs3qRDlVCXw9YtpdfUNlQ&oh=00_AfZJtJ85g2BMh0VUe8gEURvVfxsJN06QPk4Q3n9qaxx_aA&oe=68E1192B" alt="">
+                        </div>
+                    </div>
+            </div>
+            <!-- Page 3:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="2xl:w-full h-auto md:w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte1-1.fna.fbcdn.net/v/t1.6435-9/51075871_408942903174990_2055123627589763072_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE1lbR5QspPq1SOtNLVJFG2UCNH3EssEsFQI0fcSywSwal2nOFHatq7QyqDmoDqJ1Cb80TMUQen1OU6oht399k_&_nc_ohc=nzrlekhfgP4Q7kNvwEnAwjt&_nc_oc=AdnBr07oegQHX5OuMzfEPW94fw8Aelq3WtPGKfJ436Lf5uU0PLQ4FXR1r5LsnMdlaro&_nc_zt=23&_nc_ht=scontent.fvte1-1.fna&_nc_gid=naNfqu4Z626339EHmG8W3A&oh=00_AfbyYCxmy_vU_2Dz8z2Rkv4RJIWgWgZcZYgBfuYCaqR8jQ&oe=6902BEBE" alt="">
+                        </div>
+                    </div>
+            </div>
+            <!-- Page 3:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="2xl:w-full h-auto md:w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte3-1.fna.fbcdn.net/v/t1.6435-9/50452739_408942896508324_4396439776723468288_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHqMK512gA0E4V71oLxVePYTMzpaM3FrdRMzOlozcWt1JOBkh8nTBDgG24fQGFJAhbp1cOBLYOishHZYkD1W75f&_nc_ohc=K51M6unprBsQ7kNvwGiQ9tR&_nc_oc=AdnXm1TrKbR9urxDKPEZFKS85rsymTY4GgkHymYCGi7Y1i8VGAPNdLmh6240WGNS3ds&_nc_zt=23&_nc_ht=scontent.fvte3-1.fna&_nc_gid=l6i6gsJT1Q_pXvrc5FP5Xg&oh=00_AfbKLL8b0xTfodWVo10nytUkTIvmXokPvvmRdI8IxWFP2A&oe=6902B64E" alt="">
+                        </div>
+                    </div>
+            </div>
+            <!-- Page 3:-->
+            <div class="page hidden" data-page="3">
+                    <div class="flex mx-auto justify-center ">
+                        <div class="2xl:w-full h-auto md:w-96 h-auto shadow-lg">
+                            <img src="https://scontent.fvte1-2.fna.fbcdn.net/v/t1.6435-9/50929508_408942886508325_8835703005908041728_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGju20iNhUQSxi1_H1JcEjpujG90iX19iO6Mb3SJfX2I3CcRyA-JNcLUxsON_UGEnIfijMQX__lJ_8DDstUxwnc&_nc_ohc=JYCs1Mw9UkoQ7kNvwEEgR_P&_nc_oc=AdlKWoNjdengFk4z8yg6trpJNVdvnQ93FzUtPPLLuwzC-N45xI8EvONk-5TICcBy4_8&_nc_zt=23&_nc_ht=scontent.fvte1-2.fna&_nc_gid=FeWyO83ulurN7mnSEG2W2g&oh=00_AfYjoOkb7csgZEKg69oIPOn22gfjWFT6K3cpHazhap_8EA&oe=6902A7BC" alt="">
+                        </div>
+                    </div>
+            </div>
+
+            
+            
+            
+            <!-- Pagination Controls -->
+            <div class="flex items-center justify-between mt-8">
+                <button id="prev-btn" class="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-6 py-2.5 rounded-full font-semibold shadow-sm hover:bg-slate-100 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Prev
+                </button>
+                <div id="page-indicators" class="flex items-center gap-2">
+                    <!-- Indicators will be generated by JS -->
+                </div>
+                <button id="next-btn" class="flex items-center gap-2 bg-sky-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg shadow-sky-200 hover:bg-sky-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                    Next
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

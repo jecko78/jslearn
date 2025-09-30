@@ -1,0 +1,21 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* slate-50 */
+}
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+        /* Custom transition for page visibility */
+        .page {
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+        .page.hidden {
+            opacity: 0;
+            transform: scale(0.98);
+            pointer-events: none;
+            position: absolute; /* Take out of flow when hidden */
+        }
+        .page:not(.hidden) {
+            opacity: 1;
+            transform: scale(1);
+        }
